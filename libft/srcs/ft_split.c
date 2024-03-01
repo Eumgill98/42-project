@@ -73,4 +73,6 @@ char    **ft_split(char const *s, char c)
             s_idx++;
         r_idx++;
     }
+    result[r_idx] = 0;
+    return (result);
 }
