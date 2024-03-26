@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/25 15:58:51 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/26 15:12:00 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+
+int	ft_printf(const char *format, ...);
 
 #endif
