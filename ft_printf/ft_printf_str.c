@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,35 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
+int ft_print_char(va_list ap)
+{
+    char    c;
 
-//printf
-int	ft_printf(const char *format, ...);
+    c = (unsigned char)va_arg(ap, int);
+    return (write(1, &c, 1));
+}
 
-//utils
-int check_n_write(va_list ap, const char *format);
+int ft_print_str(va_list ap)
+{
+    char    *s;
+    int printed;
 
-//print_str.c
-int ft_print_char(va_list ap);
-int ft_print_str(va_list ap);
-
-//print_num.c
-int ft_print_digit(va_list ap);
-int ft_print_int(va_list ap);
-int ft_print_unint(va_list ap);
-
-//print_hex family
-int ft_print_ptr(va_list ap);
-int ft_print_s_hex(va_list ap);
-int ft_print_b_hex(va_list ap);
-
-//print_percent & other
-int ft_print_percent(va_list ap);
-int ft_print_other(const char *format);
-
-#endif
+    s = va_arg(ap, char *);
+    printed = 0;
+    while (!s)
+    {
+        printed += write(1, s, 1);
+        s++;
+    }
+    return (printed)
+}
