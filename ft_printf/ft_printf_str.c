@@ -6,31 +6,31 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/26 15:12:00 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:43:54 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_char(va_list ap)
+int	ft_print_char(va_list ap)
 {
-    char    c;
+	char	c;
 
-    c = (unsigned char)va_arg(ap, int);
-    return (write(1, &c, 1));
+	c = (unsigned char)va_arg(ap, int);
+	return (write(1, &c, 1));
 }
 
-int ft_print_str(va_list ap)
+int	ft_print_str(va_list ap)
 {
-    char    *s;
-    int printed;
+	char	*s;
+	int		printed;
 
-    s = va_arg(ap, char *);
-    printed = 0;
-    while (!s)
-    {
-        printed += write(1, s, 1);
-        s++;
-    }
-    return (printed)
+	s = va_arg(ap, char *);
+	printed = 0;
+	while (!s)
+	{
+		printed += write(1, s, 1);
+		s++;
+	}
+	return (printed);
 }

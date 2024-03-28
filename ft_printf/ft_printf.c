@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:32:37 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/26 15:37:12 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/28 16:37:48 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	_doprintf(va_list ap, const char *format)
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	int	printed;
+	int		printed;
 
 	printed = 0;
 	va_start(ap, format);
