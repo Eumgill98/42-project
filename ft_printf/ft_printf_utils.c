@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/29 16:44:09 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:01:05 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_n_write(va_list ap, const char *format)
 	else if (_check_flag(format + 1, "cspdiuxX%") == 2)
 		printed = ft_print_ptr(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 3)
-		printed = ft_print_digit(ap);
+		printed = ft_print_int(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 4)
 		printed = ft_print_int(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 5)
