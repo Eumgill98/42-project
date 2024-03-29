@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:32:37 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/29 16:47:38 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:51:29 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	_doprintf(va_list ap, const char *format)
 			format ++;
 		}
 	}
-	return (read_size);
+	return (printed);
 }
 
 int	ft_printf(const char *format, ...)
