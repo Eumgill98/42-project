@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/28 17:15:17 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:29:35 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_n_write(va_list ap, const char *format)
 	else if (_check_flag(format + 1, "cspdiuxX%") == 1)
 		printed = ft_print_str(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 2)
-		// printed = ft_print_ptr();
+		printed = ft_print_ptr(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 3)
 		printed = ft_print_digit(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 4)
@@ -43,9 +43,9 @@ int	check_n_write(va_list ap, const char *format)
 	else if (_check_flag(format + 1, "cspdiuxX%") == 5)
 		printed = ft_print_unint(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 6)
-		// printed = ft_print_s_hex();
+		printed = ft_print_s_hex(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 7)
-		// printed = ft_print_b_hex();
+		printed = ft_print_b_hex(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 8)
 		// printed = ft_print_percent();
 	else if (_check_flag(format + 1, "cspdiuxX%") == -1)
