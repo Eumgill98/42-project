@@ -6,11 +6,25 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/29 16:29:35 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/03/29 16:44:09 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	_ft_put_char(char c)
+{
+	return (write(1, &c, 1));
+}
+
+static int	_ft_put_other(char c)
+{
+	int	printed;
+
+	printed = _ft_put_char('%');
+	printed += _ft_put_char(c);
+	return (printed);
+}
 
 static int	_check_flag(const char *format, const char *check_flag)
 {
@@ -47,8 +61,8 @@ int	check_n_write(va_list ap, const char *format)
 	else if (_check_flag(format + 1, "cspdiuxX%") == 7)
 		printed = ft_print_b_hex(ap);
 	else if (_check_flag(format + 1, "cspdiuxX%") == 8)
-		// printed = ft_print_percent();
+		printed = _ft_put_char('%');
 	else if (_check_flag(format + 1, "cspdiuxX%") == -1)
-		// printed = ft_print_other();
+		printed = _ft_put_other(*(format + 1));
 	return (printed);
 }
