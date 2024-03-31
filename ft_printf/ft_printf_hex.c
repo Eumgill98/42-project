@@ -60,7 +60,10 @@ int	ft_print_ptr(va_list ap)
 	void	*ptr;
 	int		printed;
 
+	printed = write(1, "0x", 2);
 	ptr = va_arg(ap, void *);
-	printed = ft_put_hex((unsigned long long)ptr, "0123456789abcdef");
+	if (!ptr)
+		printed += write(1, "0", 1);
+	printed += ft_put_hex((unsigned long long)ptr, "0123456789abcdef");
 	return (printed);
 }
