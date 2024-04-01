@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:02:30 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/29 16:28:50 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:08:24 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	ft_putchar(int num)
 	return (printed);
 }
 
-static int	ft_put_hex(unsigned int num, const char *refer)
+static int	ft_put_hex(unsigned long long num, const char *refer)
 {
 	int	printed;
 
@@ -51,7 +51,7 @@ int	ft_print_b_hex(va_list ap)
 	int				printed;
 
 	num = va_arg(ap, unsigned int);
-	printed = ft_put_hex(num, "012345789ABCDEF");
+	printed = ft_put_hex(num, "0123456789ABCDEF");
 	return (printed);
 }
 
