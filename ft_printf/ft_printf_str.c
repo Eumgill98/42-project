@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/29 16:59:47 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:16:07 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_print_char(va_list ap)
 	return (write(1, &c, 1));
 }
 
-#include <stdio.h>
 int	ft_print_str(va_list ap)
 {
 	char	*s;
