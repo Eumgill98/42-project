@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:02:30 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/04/01 15:08:24 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/04/01 15:46:40 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,13 @@ int	ft_print_ptr(va_list ap)
 	void	*ptr;
 	int		printed;
 
-	printed = write(1, "0x", 2);
 	ptr = va_arg(ap, void *);
 	if (!ptr)
-		printed += write(1, "0", 1);
+	{
+		printed = write(1, "(nil)", 5);
+		return (printed);
+	}
+	printed = write(1, "0x", 2);
 	printed += ft_put_hex((unsigned long long)ptr, "0123456789abcdef");
 	return (printed);
 }
