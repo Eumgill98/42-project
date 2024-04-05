@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 15:32:37 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/03/29 16:51:29 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:51:18 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	ft_printf(const char *format, ...)
 	va_list	ap;
 	int		printed;
 
+	if (!format)
+		return (-1);
 	printed = 0;
 	va_start(ap, format);
 	printed = _doprintf(ap, format);
