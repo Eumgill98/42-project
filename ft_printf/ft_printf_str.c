@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 14:22:04 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/04/01 15:15:20 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/04/05 16:50:19 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ int	ft_print_str(va_list ap)
 	int		printed;
 
 	s = va_arg(ap, char *);
+	if (!s)
+	{
+		printed = write(1, "(null)", 6);
+		return (printed);
+	}
 	printed = 0;
 	while (*s)
 	{

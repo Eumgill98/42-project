@@ -12,17 +12,13 @@ NAME = libftprintf.a
 
 SRCS_DIR = .
 
-SRCS =  ${SRCS_DIR}/ft_printf.c \
-	${SRCS_DIR}/ft_printf_hex.c \
-	${SRCS_DIR}/ft_printf_num.c \
-	${SRCS_DIR}/ft_printf_str.c \
-	${SRCS_DIR}/ft_printf_utils.c
+SRCS =  $(SRCS_DIR)/ft_printf.c  $(SRCS_DIR)/ft_printf_hex.c $(SRCS_DIR)/ft_printf_num.c $(SRCS_DIR)/ft_printf_str.c $(SRCS_DIR)/ft_printf_utils.c
 
 OBJS  = ${SRCS:.c=.o}
 
 all: $(NAME)
 
-$(NAME): $(OBJECT)
+$(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
 %.o: %c
