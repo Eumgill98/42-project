@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:07:05 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 19:15:39 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:43:44 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	load_map(t_maps *maps)
 	if (!(maps->map))
 		return (-1);
 	curr = maps->map_lst;
+	idx = 0;
 	while (curr)
 	{
 		maps->map[idx] = ft_strdup(curr->content);
