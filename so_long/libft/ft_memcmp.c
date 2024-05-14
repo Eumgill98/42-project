@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/02/27 18:25:23 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/02/27 18:44:05 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_list	*curr;
-	t_list	*next;
+	unsigned char	*t_s1;
+	unsigned char	*t_s2;
+	size_t			idx;
 
-	curr = maps->map_lst;
-	while (curr)
-	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
-	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	t_s1 = (unsigned char *)s1;
+	t_s2 = (unsigned char *)s2;
+	idx = 0;
+	if (!n)
+		return (0);
+	while (t_s1[idx] == t_s2[idx] && idx < n - 1)
+		idx++;
+	return (t_s1[idx] - t_s2[idx]);
 }

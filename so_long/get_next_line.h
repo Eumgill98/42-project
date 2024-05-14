@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/03/11 20:18:37 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/19 14:00:06 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	freemap_lst(t_maps *maps)
-{
-	t_list	*curr;
-	t_list	*next;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-	curr = maps->map_lst;
-	while (curr)
-	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
-	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
-}
+# include <stdlib.h>
+# include <unistd.h>
+
+char	*get_next_line(int fd);
+char	*gnl_ft_strchr(char *str, int c);
+char	*gnl_ft_strjoin(char *s1, char *s2);
+size_t	gnl_ft_strlen(char *str);
+
+#endif

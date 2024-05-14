@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/02/27 15:31:00 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/04 16:09:14 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#include "so_long.h"
-
-void	freemap_lst(t_maps *maps)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_list	*curr;
-	t_list	*next;
+	unsigned char	*t_dest;
+	unsigned char	*t_src;
 
-	curr = maps->map_lst;
-	while (curr)
+	if (dest > src)
 	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
+		t_dest = (unsigned char *)dest;
+		t_src = (unsigned char *)src;
+		while (n-- > 0)
+			t_dest[n] = t_src[n];
 	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	else
+		ft_memcpy(dest, src, n);
+	return (dest);
 }
