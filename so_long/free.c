@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:43:18 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	freemap_lst(t_maps *maps)
 	
 void	freemap(t_maps *maps, int idx)
 {
-	while (i--)
+	while (idx--)
 	{
 		free(maps->map[idx]);
 		maps->map[idx] = 0;

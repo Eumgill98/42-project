@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:21:57 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:42:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
-# define SOLONG_H
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
 # include <mlx.h>
 # include <stdlib.h>
@@ -36,6 +36,9 @@ typedef struct s_maps {
 void	freemap_lst(t_maps *maps);
 void	freemap(t_maps *maps, int idx);
 
-int		check_maps(t_maps *maps);
+void	set_maps(t_maps *maps, char *map_path);
+
+int	load_map(t_maps *maps);
+//int		check_maps(t_maps *maps);
 
 #endif
