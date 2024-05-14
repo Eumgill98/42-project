@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/11 16:49:26 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 17:00:57 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/05/14 19:11:39 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "so_long.h"
 
-int	esc_hook(int keycode, t_sets *sets)
+void	freemap_lst(t_maps *maps)
 {
-	if (keycode == 0xFF1B)
+	t_list	*curr;
+	t_list	*next;
+
+	curr = maps->map_lst;
+	while (curr)
 	{
-		mlx_destroy_window(sets->mlx_ptr, sets->win_ptr);
-		exit(0);
+		next = curr->next;
+		free(curr->content);
+		free(curr);
+		curr = next;
 	}
-	return (0);
+	free(curr);
 }
-
-int	main(void)
+	
+void	freemap(t_maps *maps, int idx)
 {
-	t_sets	sets;
-
-	sets.mlx_ptr = mlx_init();
-	sets.win_ptr = mlx_new_window(sets.mlx_ptr, 600, 600, "my_mlx");
-	mlx_key_hook(sets.win_ptr, esc_hook, &sets);
-	mlx_loop(sets.mlx_ptr);
-	return (0);
 }
