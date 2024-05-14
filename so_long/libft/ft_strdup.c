@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/02/28 17:00:38 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/02/28 17:20:02 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+char	*ft_strdup(const char *s)
 {
-	t_list	*curr;
-	t_list	*next;
+	char	*result;
+	size_t	len;
+	int		idx;
 
-	curr = maps->map_lst;
-	while (curr)
+	len = ft_strlen(s);
+	result = (char *)malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (0);
+	idx = 0;
+	while (s[idx])
 	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
+		result[idx] = s[idx];
+		idx++;
 	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	result[idx] = 0;
+	return (result);
 }

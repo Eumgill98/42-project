@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/03/03 17:21:18 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/03 17:22:42 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*curr;
-	t_list	*next;
+	int	len;
 
-	curr = maps->map_lst;
-	while (curr)
+	len = 0;
+	while (lst)
 	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
+		len++;
+		lst = lst->next;
 	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	return (len);
 }

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/03/04 15:07:13 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/05 18:54:55 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	t_list	*curr;
-	t_list	*next;
+	int		start;
+	int		end;
+	char	*result;
 
-	curr = maps->map_lst;
-	while (curr)
-	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
-	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
-}
+	if (!s1)
+		return (0);
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (s1[start] && ft_strrchr(set, s1[start]))
+		start++;
+	while (end >= 0 && ft_strrchr(set, s1[end]))
+		end--;
+	if (start > end)
+		return (ft_strdup(""));
+	result = ft_substr(s1, start, end - start + 1);
+	return (result);
+}	

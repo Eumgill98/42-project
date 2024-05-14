@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/02/27 15:57:10 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/04 15:43:32 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_list	*curr;
-	t_list	*next;
+	size_t	idx;
 
-	curr = maps->map_lst;
-	while (curr)
+	if (!size)
+		return (ft_strlen(src));
+	idx = 0;
+	while (src[idx] && idx + 1 < size)
 	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
+		dst[idx] = src[idx];
+		idx++;
 	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	dst[idx] = 0;
+	return (ft_strlen(src));
 }

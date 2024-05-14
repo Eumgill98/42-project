@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/02/28 16:58:20 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/07 16:32:54 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_list	*curr;
-	t_list	*next;
+	void	*tmp;
+	size_t	total_size;
 
-	curr = maps->map_lst;
-	while (curr)
-	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
-	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	total_size = nmemb * size;
+	if (!total_size)
+		return (malloc(0));
+	if ((total_size / nmemb) != size)
+		return (0);
+	tmp = malloc(total_size);
+	if (!tmp)
+		return (0);
+	ft_bzero(tmp, (total_size));
+	return (tmp);
 }

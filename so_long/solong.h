@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 19:11:43 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/14 21:21:57 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <libft.h>
-# include "get_next_line/get_next_line.h"
+# include "get_next_line.h"
 
 typedef struct s_sets {
 	void	*mlx_ptr;

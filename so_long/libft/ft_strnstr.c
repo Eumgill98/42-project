@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:05:25 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/02/28 15:57:14 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/03/05 18:40:58 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	freemap_lst(t_maps *maps)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_list	*curr;
-	t_list	*next;
+	size_t	b_idx;
+	size_t	l_idx;
 
-	curr = maps->map_lst;
-	while (curr)
+	b_idx = 0;
+	if (!*little)
+		return ((char *)big);
+	while (b_idx < len && big[b_idx])
 	{
-		next = curr->next;
-		free(curr->content);
-		free(curr);
-		curr = next;
+		l_idx = 0;
+		while (big[b_idx + l_idx] == little[l_idx] && b_idx + l_idx < len)
+		{
+			l_idx++;
+			if (!little[l_idx])
+				return ((char *)&big[b_idx]);
+		}
+		b_idx++;
 	}
-	free(curr);
-}
-	
-void	freemap(t_maps *maps, int idx)
-{
-	while (i--)
-	{
-		free(maps->map[idx]);
-		maps->map[idx] = 0;
-	}
+	return (0);
 }
