@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/15 18:46:08 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:35:55 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	esc_hook(int keycode, t_sets *sets)
 	if (keycode == 0xFF1B)
 	{
 		mlx_destroy_window(sets->mlx_ptr, sets->win_ptr);
+		mlx_destroy_display(sets->mlx_ptr);
 		free(sets->mlx_ptr);
 		freemap(sets, sets->row);
 		close(sets->fd);
