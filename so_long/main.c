@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:49:26 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/15 18:04:41 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/15 19:36:18 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int	main(void)
 	printf("row : %d\n", sets.row);
 	printf("fd : %d\n", sets.fd);
 	
-	//sets.mlx_ptr = mlx_init();
-	//sets.win_ptr = mlx_new_window(sets.mlx_ptr, 600, 600, "my_mlx");
-	//mlx_key_hook(sets.win_ptr, esc_hook, &sets);
-	//mlx_loop(sets.mlx_ptr);
-	freemap(&sets, sets.row);
-	close(sets.fd);
+	sets.mlx_ptr = mlx_init();
+	sets.win_ptr = mlx_new_window(sets.mlx_ptr, 600, 600, "my_mlx");
+	mlx_key_hook(sets.win_ptr, esc_hook, &sets);
+	mlx_loop(sets.mlx_ptr);
 	return (0);
 }
