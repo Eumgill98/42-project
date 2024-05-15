@@ -6,13 +6,14 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:07:05 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/15 17:21:13 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:46:34 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
-static int	copy_line(char *line, t_maps *maps)
+static int	copy_line(char *line, t_sets *sets)
 {
 	t_list	*new;
 	t_list	*last;
@@ -20,68 +21,75 @@ static int	copy_line(char *line, t_maps *maps)
 	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 	{
-		freemap_lst(maps);
+		freemap_lst(sets);
 		return (-1);
 	}
 	new->next = 0;
 	new->content = ft_strdup(line);
-	if (!(maps->map_lst))
-		maps->map_lst = new;
+	if (!(sets->map_lst))
+		sets->map_lst = new;
 	else
 	{
-		last = ft_lstlast(maps->map_lst);
+		last = ft_lstlast(sets->map_lst);
 		last->next = new;
 	}
 	return (1);
 }
 
-static int	make_map_lst(t_maps *maps)
+static int	make_map_lst(t_sets *sets)
 {
 	char	*line;
 
-	line = get_next_line(maps->fd);
+	line = get_next_line(sets->fd);
 	if (!line)
 		return (-1);
 	while (line)
 	{
-		if (copy_line(line, maps) == -1)
+		if (copy_line(line, sets) == -1)
 		{
 			free(line);
 			return (-1);
 		}
-		maps->row++;
+		sets->row++;
 		free(line);
-		line = get_next_line(maps->fd);
+		line = get_next_line(sets->fd);
 	}
 	free(line);
 	return (1);
 }
 
-int	load_map(t_maps *maps)
+static	int	lst_map_copy(t_sets *sets)
 {
 	int		idx;
 	t_list	*curr;
 
-	if (make_map_lst(maps) == -1)
-		return (-1);
-	maps->map = (char **)malloc(sizeof(char *) * (maps->row + 1));
-	if (!(maps->map))
-		return (-1);
-	curr = maps->map_lst;
+	curr = sets->map_lst;
 	idx = 0;
 	while (curr)
 	{
-		maps->map[idx] = ft_strdup(curr->content);
-		if (!(maps->map[idx]))
+		sets->map[idx] = ft_strdup(curr->content);
+		if (!(sets->map[idx]))
 		{
-			freemap_lst(maps);
-			freemap(maps, idx);
+			freemap_lst(sets);
+			freemap(sets, idx);
 			return (-1);
 		}
 		curr = curr->next;
 		idx++;
 	}
-	maps->map[idx] = 0;
-	freemap_lst(maps);
+	sets->map[idx] = 0;
+	freemap_lst(sets);
+	return (1);
+}
+
+int	load_map(t_sets *sets)
+{
+	if (make_map_lst(sets) == -1)
+		return (-1);
+	sets->map = (char **)malloc(sizeof(char *) * (sets->row + 1));
+	if (!(sets->map))
+		return (-1);
+	if (lst_map_copy(sets) == -1)
+		return (-1);
 	return (1);
 }

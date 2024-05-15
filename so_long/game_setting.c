@@ -12,10 +12,10 @@
 
 #include "so_long.h"
 
-void	set_maps(t_maps *maps, char *map_path)
+void	set_maps(t_sets *sets, char *map_path)
 {
-	maps->fd = open(map_path, O_RDONLY);
-	maps->map_lst = NULL;
-	maps->map = NULL;
-	maps->row = 0;
+	sets->fd = open(map_path, O_RDONLY);
+	sets->map_lst = NULL;
+	sets->map = NULL;
+	sets->row = 0;
 }

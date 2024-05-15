@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/14 21:42:37 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:39:36 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,19 @@ typedef struct s_sets {
 	void	*win_ptr;
 	int		win_width;
 	int		win_height;
-}	t_sets;
-
-typedef struct s_maps {
 	t_list	*map_lst;
 	char	**map;
 	int		fd;
 	int		row;
-}	t_maps;
+}	t_sets;
 
-void	freemap_lst(t_maps *maps);
-void	freemap(t_maps *maps, int idx);
+void	freemap_lst(t_sets *sets);
+void	freemap(t_sets *sets, int idx);
+int	esc_hook(int keycode, t_sets *sets);
 
-void	set_maps(t_maps *maps, char *map_path);
+void	set_maps(t_sets *sets, char *map_path);
 
-int	load_map(t_maps *maps);
-//int		check_maps(t_maps *maps);
+int	load_map(t_sets *sets);
+//int		check_maps(t_sets *sets);
 
 #endif
