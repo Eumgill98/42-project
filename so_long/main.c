@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:49:26 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/15 19:36:18 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/16 17:16:34 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	t_sets	sets;
 
-	set_maps(&sets, "map/map1.ber");
+	init_sets(&sets, "map/map1.ber");
 	load_map(&sets);
 	printf("row : %d\n", sets.row);
 	printf("fd : %d\n", sets.fd);
