@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/15 19:35:55 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:25:00 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ void	freemap(t_sets *sets, int idx)
 	}
 	free(sets->map);
 	sets->map = 0;
+}
+
+void	freemap_flag(t_sets *sets)
+{
+	free(sets->map_flag);
+	sets->map_flag = 0;
 }
 
 int	esc_hook(int keycode, t_sets *sets)

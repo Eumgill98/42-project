@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/16 17:44:33 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:25:10 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <fcntl.h>
 # include <libft.h>
 # include "get_next_line.h"
+
+typedef struct s_maps {
+	int	e_num;
+	int	p_num;
+	int	c_num;
+}	t_maps;
 
 typedef struct s_sets {
 	void	*mlx_ptr;
@@ -32,18 +38,11 @@ typedef struct s_sets {
 	t_maps	*map_flag;
 }	t_sets;
 
-typedef struct s_maps {
-	int	e_num;
-	int	p_num;
-	int	c_num;
-}	t_maps;
-
-
 void	freemap_lst(t_sets *sets);
 void	freemap(t_sets *sets, int idx);
 int	esc_hook(int keycode, t_sets *sets);
 
-void	init_sets(t_sets *sets, char *map_path);
+int	init_sets(t_sets *sets, char *map_path);
 
 int	load_map(t_sets *sets);
 
