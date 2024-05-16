@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:33:54 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/16 17:45:35 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:01:43 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	check_rectangular(t_sets *sets)
 {
-	int	tmp_col;
+	int	col;
 	int	idx;
 
-	col = ft_strlen(map[0]);
+	col = ft_strlen(sets->map[0]);
 	idx = 1;
 	while (idx < sets->row)
 	{
-		if (col != ft_strlen(map[idx]))
+		if (col != (int)ft_strlen(sets->map[idx]))
 			return (-1);
 		idx++;
 	}

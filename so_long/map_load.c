@@ -6,12 +6,11 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 17:07:05 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/15 18:46:34 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/16 18:09:43 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 static int	copy_line(char *line, t_sets *sets)
 {
@@ -26,6 +25,11 @@ static int	copy_line(char *line, t_sets *sets)
 	}
 	new->next = 0;
 	new->content = ft_strdup(line);
+	if (!(new->content))
+	{
+		freemap_lst(sets);
+		return (-1);
+	}
 	if (!(sets->map_lst))
 		sets->map_lst = new;
 	else
@@ -33,7 +37,7 @@ static int	copy_line(char *line, t_sets *sets)
 		last = ft_lstlast(sets->map_lst);
 		last->next = new;
 	}
-	return (1);
+	return (0);
 }
 
 static int	make_map_lst(t_sets *sets)
@@ -55,7 +59,7 @@ static int	make_map_lst(t_sets *sets)
 		line = get_next_line(sets->fd);
 	}
 	free(line);
-	return (1);
+	return (0);
 }
 
 static	int	lst_map_copy(t_sets *sets)
@@ -79,7 +83,7 @@ static	int	lst_map_copy(t_sets *sets)
 	}
 	sets->map[idx] = 0;
 	freemap_lst(sets);
-	return (1);
+	return (0);
 }
 
 int	load_map(t_sets *sets)
@@ -91,5 +95,5 @@ int	load_map(t_sets *sets)
 		return (-1);
 	if (lst_map_copy(sets) == -1)
 		return (-1);
-	return (1);
+	return (0);
 }
