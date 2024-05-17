@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:28:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/16 18:23:05 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:24:05 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ static int	init_maps(t_maps *maps)
 int	init_sets(t_sets *sets, char *map_path)
 {
 	sets->fd = open(map_path, O_RDONLY);
+	if (fd < 0)
+		return (-1);
 	sets->map_lst = NULL;
 	sets->map = NULL;
+	sets->visted = NULL;
 	sets->row = 0;
 	sets->col = 0;
 	if (init_maps(sets->map_flag) == -1)

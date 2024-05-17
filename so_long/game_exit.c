@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/16 18:25:00 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/17 16:45:21 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ void	freemap(t_sets *sets, int idx)
 	sets->map = 0;
 }
 
+void	freevis(t_sets *sets, int idx)
+{
+	int	i;
+
+	i = 0;
+	while (i < idx)
+	{
+		free(sets->vistied[i]);
+		sets->vistied[i] = 0;
+		i++;
+	}
+	free(sets->vistied);
+	sets->vistied = 0;
+}
+
 void	freemap_flag(t_sets *sets)
 {
 	free(sets->map_flag);
@@ -57,6 +72,7 @@ int	esc_hook(int keycode, t_sets *sets)
 		mlx_destroy_display(sets->mlx_ptr);
 		free(sets->mlx_ptr);
 		freemap(sets, sets->row);
+		freevis(sets, sets->row);
 		close(sets->fd);
 		exit(0);
 	}
