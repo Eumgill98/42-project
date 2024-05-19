@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/17 16:45:21 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:52:32 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void	freevis(t_sets *sets, int idx)
 	i = 0;
 	while (i < idx)
 	{
-		free(sets->vistied[i]);
-		sets->vistied[i] = 0;
+		free(sets->visited[i]);
+		sets->visited[i] = 0;
 		i++;
 	}
-	free(sets->vistied);
-	sets->vistied = 0;
+	free(sets->visited);
+	sets->visited = 0;
 }
 
 void	freemap_flag(t_sets *sets)
