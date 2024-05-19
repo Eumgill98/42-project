@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:33:54 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/16 18:01:43 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/19 18:35:16 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	check_component(t_sets *sets)
 {
 	int	row;
 	int	col;
+	int	pass;
 
 	row = 0;
 	while (row < sets->row)
@@ -40,14 +41,14 @@ int	check_component(t_sets *sets)
 		col = 0;
 		while (col < sets->col)
 		{
-			if (sets->map[row][col] == '1')
-				continue ;
+			if (sets->map[row][col] == '1' || sets->map[row][col] == '0')
+				pass = 1;
 			else if (sets->map[row][col] == 'C')
 				sets->map_flag->c_num++;
 			else if (sets->map[row][col] == 'E')
 				sets->map_flag->e_num++;
 			else if (sets->map[row][col] == 'P')
-				sets->map_flag->e_num++;
+				sets->map_flag->p_num++;
 			else
 				return (-1);
 			col++;

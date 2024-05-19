@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/17 16:45:10 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/19 17:49:41 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_maps {
 typedef struct s_sets {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	void	*g;
+	void	*w;
+	void	*c;
+	void	*e;
+	void	*p;
+	int		i_w;
+	int		i_h;
 	int		win_width;
 	int		win_height;
 	t_list	*map_lst;
@@ -36,6 +43,8 @@ typedef struct s_sets {
 	int		fd;
 	int		row;
 	int		col;
+	int		player_r;
+	int		player_c;
 	t_maps	*map_flag;
 }	t_sets;
 
@@ -49,9 +58,11 @@ int		init_sets(t_sets *sets, char *map_path);
 
 int		load_map(t_sets *sets);
 
-int		check_maps(t_sets *sets);
 int		check_rectangular(t_sets *sets);
 int		check_component(t_sets *sets);
 int		check_wall(t_sets *sets);
 int		check_path(t_sets *sets);
+int		map_check(t_sets *sets);
+
+int		map_draw(t_sets *sets);
 #endif
