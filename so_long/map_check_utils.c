@@ -44,11 +44,11 @@ int	check_component(t_sets *sets)
 			if (sets->map[row][col] == '1' || sets->map[row][col] == '0')
 				pass = 1;
 			else if (sets->map[row][col] == 'C')
-				sets->map_flag->c_num++;
+				sets->map_flag.c_num++;
 			else if (sets->map[row][col] == 'E')
-				sets->map_flag->e_num++;
+				sets->map_flag.e_num++;
 			else if (sets->map[row][col] == 'P')
-				sets->map_flag->p_num++;
+				sets->map_flag.p_num++;
 			else
 				return (-1);
 			col++;
