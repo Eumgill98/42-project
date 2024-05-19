@@ -58,12 +58,6 @@ void	freevis(t_sets *sets, int idx)
 	sets->visited = 0;
 }
 
-void	freemap_flag(t_sets *sets)
-{
-	free(sets->map_flag);
-	sets->map_flag = 0;
-}
-
 int	esc_hook(int keycode, t_sets *sets)
 {
 	if (keycode == 0xFF1B)

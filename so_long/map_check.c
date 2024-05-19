@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 #include "so_long.h"
 
-#include <stdio.h>
 static int	check_map_flag(t_sets *sets)
 {
 	if (sets->map_flag->e_num != 1)
@@ -29,15 +28,11 @@ int	map_check(t_sets *sets)
 		return (-1);
 	if (check_component(sets) == -1)
 		return (-1);
-	printf("check2\n");
 	if (check_map_flag(sets) == -1)
 		return (-1);
-	printf("check3\n");
 	if (check_wall(sets) == -1)
 		return (-1);
-	printf("check4\n");
 	if (check_path(sets) == -1)
 		return (-1);
-	printf("check5\n");
 	return (0);
 }

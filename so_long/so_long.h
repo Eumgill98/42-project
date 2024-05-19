@@ -45,7 +45,7 @@ typedef struct s_sets {
 	int		col;
 	int		player_r;
 	int		player_c;
-	t_maps	*map_flag;
+	t_maps	map_flag;
 }	t_sets;
 
 void	freemap_lst(t_sets *sets);

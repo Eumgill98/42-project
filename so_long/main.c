@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-/*static int	check_extension(const char *filename, const char *extension)
+static int	check_extension(const char *filename, const char *extension)
 {
 	int filename_len;
 	int	extension_len;
@@ -22,10 +21,16 @@
 	extension_len = ft_strlen(filename);
 	if (filename_len < extension_len) 
 		return (-1);
-	if (ft_strncmp(filename + filename_len - extension_len, extension, extension_len))
-		return (-1);
+	filename += filename_len - extension_len;
+	while (*extension)
+	{
+		if (*filename != *extension)
+			return (-1);
+		filename++;
+		extension++;
+	}
 	return (0);
-}*/
+}
 
 int	main(int ac, char **av)
 {
@@ -33,12 +38,12 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		fflush(stdout);
-		//if (check_extension(av[1], ".ber") == -1)
-			//return (-1);	
+		if (check_extension(av[1], ".ber") == -1)
+			return (-1);	
 		sets.mlx_ptr = mlx_init();
 		sets.win_ptr = mlx_new_window(sets.mlx_ptr, 600, 600, "my_mlx");
-		init_sets(&sets, av[1]);
+		if (init_sets(&sets, av[1]) == -1);
+			return (-1);
 		load_map(&sets);
 		if (map_check(&sets) == -1)
 			return (-1);
