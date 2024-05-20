@@ -6,18 +6,18 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:47:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/19 18:28:19 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:11:23 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
 
 static int	check_map_flag(t_sets *sets)
 {
-	if (sets->map_flag->e_num != 1)
+	if (sets->map_flag.e_num != 1)
 		return (-1);
-	if (sets->map_flag->p_num != 1)
+	if (sets->map_flag.p_num != 1)
 		return (-1);
-	if (!(sets->map_flag->c_num))
+	if (!(sets->map_flag.c_num))
 		return (-1);
 	return (0);
 }

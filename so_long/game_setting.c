@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:28:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/19 18:49:07 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:10:16 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,7 @@ int	init_sets(t_sets *sets, char *map_path)
 	if (open_map_file(sets, map_path) == -1)
 		return (-1);
 	initialize_sets(sets);
-	sets->mlx_ptr = mlx_init();
-	if (!sets->mlx_ptr)
-		return (-1);
 	if (load_image_file(sets) == -1)
-		retunr (-1);
+		return (-1);
 	return (0);
 }
