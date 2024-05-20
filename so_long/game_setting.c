@@ -47,6 +47,8 @@ static int	load_image_file(t_sets *sets)
 
 static void	initialize_sets(t_sets *sets)
 {
+	sets->mlx_ptr = NULL;
+	sets->win_ptr = NULL;
 	sets->map_lst = NULL;
 	sets->map = NULL;
 	sets->visited = NULL;
@@ -65,12 +67,12 @@ static void	initialize_sets(t_sets *sets)
 
 int	init_sets(t_sets *sets, char *map_path)
 {
+	initialize_sets(sets);
 	if (open_map_file(sets, map_path) == -1)
 		return (-1);
 	sets->mlx_ptr = mlx_init();
 	if (!sets->mlx_ptr)
 		return (-1);
-	initialize_sets(sets);
 	if (load_image_file(sets) == -1)
 		return (-1);
 	return (0);
