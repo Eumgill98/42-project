@@ -17,12 +17,8 @@ static void	img_draw(t_sets *sets, char flag, int x, int y)
 	mlx_put_image_to_window(\
 		sets->mlx_ptr, sets->win_ptr, sets->g, x, y);
 	if (flag == '1')
-	{
 		mlx_put_image_to_window(\
-		sets->mlx_ptr, sets->win_ptr, sets->g, x, y);
-		mlx_put_image_to_window(\
-		sets->mlx_ptr, sets->win_ptr, sets->w, x, y);
-	}
+			sets->mlx_ptr, sets->win_ptr, sets->w, x, y);
 	else if (flag == 'P')
 		mlx_put_image_to_window(\
 			sets->mlx_ptr, sets->win_ptr, sets->p, x, y);
@@ -43,7 +39,7 @@ int	map_draw(t_sets *sets)
 
 	row = 0;
 	y = 0;
-	mlx_clear_window(sets->mlx_ptr, sets->win_ptr);
+	// mlx_clear_window(sets->mlx_ptr, sets->win_ptr);
 	while (sets->map[row])
 	{
 		col = 0;
