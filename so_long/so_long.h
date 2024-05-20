@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/19 17:49:41 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:55:05 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_sets {
 	void	*p;
 	int		i_w;
 	int		i_h;
-	int		win_width;
-	int		win_height;
+	int		w_w;
+	int		w_h;
 	t_list	*map_lst;
 	char	**map;
 	char	**visited;	
@@ -65,4 +65,6 @@ int		check_path(t_sets *sets);
 int		map_check(t_sets *sets);
 
 int		map_draw(t_sets *sets);
+
+void	error_exit(t_sets *sets);
 #endif

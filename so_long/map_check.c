@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:47:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/20 16:11:23 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/20 17:54:30 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -34,5 +34,7 @@ int	map_check(t_sets *sets)
 		return (-1);
 	if (check_path(sets) == -1)
 		return (-1);
+	sets->w_w = sets->col * sets->i_w;
+	sets->w_h = sets->row * sets->i_h;
 	return (0);
 }
