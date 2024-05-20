@@ -17,8 +17,12 @@ static void	img_draw(t_sets *sets, char flag, int x, int y)
 	mlx_put_image_to_window(\
 		sets->mlx_ptr, sets->win_ptr, sets->g, x, y);
 	if (flag == '1')
+	{
+		mlx_put_image_to_window(\
+		sets->mlx_ptr, sets->win_ptr, sets->g, x, y);
 		mlx_put_image_to_window(\
 		sets->mlx_ptr, sets->win_ptr, sets->w, x, y);
+	}
 	else if (flag == 'P')
 		mlx_put_image_to_window(\
 			sets->mlx_ptr, sets->win_ptr, sets->p, x, y);

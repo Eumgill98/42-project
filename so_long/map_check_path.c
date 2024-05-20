@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:48:15 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/19 17:56:43 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:11:42 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	check_path(t_sets *sets)
 	if (init_visited(sets) == -1)
 		return (-1);
 	find_player(sets);
-	if (map_dfs(sets->player_r, sets->player_c, sets) != sets->map_flag->c_num)
+	if (map_dfs(sets->player_r, sets->player_c, sets) != sets->map_flag.c_num)
 		return (-1);
 	return (0);
 }
