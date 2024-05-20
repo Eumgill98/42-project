@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	img_draw(t_sets *sets, char flag, int x, int y)
+static int	img_draw(t_sets *sets, char flag, int x, int y)
 {
 	mlx_put_image_to_window(\
 		sets->mlx_ptr, sets->win_ptr, sets->g, x, y);
@@ -28,30 +28,25 @@ static void	img_draw(t_sets *sets, char flag, int x, int y)
 	else if (flag == 'E')
 		mlx_put_image_to_window(\
 			sets->mlx_ptr, sets->win_ptr, sets->e, x, y);
+	return (0);
 }
 
 int	map_draw(t_sets *sets)
 {
 	int	row;
 	int	col;
-	int	x;
-	int	y;
 
 	row = 0;
-	y = 0;
-	// mlx_clear_window(sets->mlx_ptr, sets->win_ptr);
 	while (sets->map[row])
 	{
 		col = 0;
-		x = 0;
 		while (sets->map[row][col])
 		{
-			img_draw(sets, sets->map[row][col], x, y);
+			img_draw(sets, sets->map[row][col], \
+				col * sets->i_w, row * sets->i_h);
 			col++;
-			x += sets->i_w;
 		}
 		row++;
-		y += sets->i_h;
 	}
 	return (0);
 }
