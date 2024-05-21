@@ -46,8 +46,11 @@ int	main(int ac, char **av)
 		if (map_check(&sets) == -1)
 			error_exit(&sets);
 		sets.win_ptr = mlx_new_window(sets.mlx_ptr, sets.w_w, sets.w_h, "my_mlx");
+		if (!sets.win_ptr)
+			error_exit(&sets);
 		map_draw(&sets);
 		mlx_key_hook(sets.win_ptr, esc_hook, &sets);
+		mlx_key_hook(sets.win_ptr, key_hook, &sets);
 		mlx_loop(sets.mlx_ptr);
 	}
 }

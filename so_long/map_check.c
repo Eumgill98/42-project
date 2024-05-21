@@ -34,7 +34,7 @@ int	map_check(t_sets *sets)
 		return (-1);
 	if (check_path(sets) == -1)
 		return (-1);
-	sets->w_w = sets->col * sets->i_w;
-	sets->w_h = sets->row * sets->i_h;
+	sets->w_w = sets->col * sets->imgs.i_w;
+	sets->w_h = sets->row * sets->imgs.i_h;
 	return (0);
 }

@@ -25,16 +25,37 @@ typedef struct s_maps {
 	int	c_num;
 }	t_maps;
 
-typedef struct s_sets {
-	void	*mlx_ptr;
-	void	*win_ptr;
+typedef struct s_play {
+	int	player_r;
+	int	player_c;
+	int	collected;
+	int	direction;
+	int	door_r;
+	int	door_c;
+	int	door_open;
+	int	movement;
+}	t_play;
+
+typedef struct s_imgs {
 	void	*g;
 	void	*w;
 	void	*c;
 	void	*e;
-	void	*p;
+	void	*e_open;
+	void	*back;
+	void	*right;
+	void	*front;
+	void	*left;
 	int		i_w;
 	int		i_h;
+}	t_imgs;
+
+typedef struct s_sets {
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_maps	map_flag;
+	t_play	player;
+	t_imgs	imgs;
 	int		w_w;
 	int		w_h;
 	t_list	*map_lst;
@@ -43,11 +64,10 @@ typedef struct s_sets {
 	int		fd;
 	int		row;
 	int		col;
-	int		player_r;
-	int		player_c;
-	t_maps	map_flag;
+
 }	t_sets;
 
+void	error_exit(t_sets *sets);
 void	freemap_lst(t_sets *sets);
 void	freemap(t_sets *sets, int idx);
 void	freevis(t_sets *sets, int idx);
@@ -64,7 +84,9 @@ int		check_wall(t_sets *sets);
 int		check_path(t_sets *sets);
 int		map_check(t_sets *sets);
 
+int		player_draw(t_sets *sets, int x, int y);
+int		img_draw(t_sets *sets, char flag, int x, int y);
 int		map_draw(t_sets *sets);
 
-void	error_exit(t_sets *sets);
+int		key_hook(int keycode, t_sets *sets);
 #endif

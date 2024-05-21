@@ -72,8 +72,8 @@ static int	find_player(t_sets *sets)
 		{
 			if (sets->map[row][col] == 'P')
 			{
-				sets->player_r = row;
-				sets->player_c = col;
+				sets->player.player_r = row;
+				sets->player.player_c = col;
 				return (0);
 			}
 			col++;
@@ -91,7 +91,8 @@ int	check_path(t_sets *sets)
 	if (init_visited(sets) == -1)
 		return (-1);
 	find_player(sets);
-	if (map_dfs(sets->player_r, sets->player_c, sets) != sets->map_flag.c_num)
+	if (map_dfs(sets->player.player_r, \
+		sets->player.player_c, sets) != sets->map_flag.c_num)
 		return (-1);
 	return (0);
 }
