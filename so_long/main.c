@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	check_extension(const char *filename, const char *extension)
+static void	check_extension(const char *filename, const char *extension)
 {
 	int	filename_len;
 	int	extension_len;
@@ -20,16 +20,18 @@ static int	check_extension(const char *filename, const char *extension)
 	filename_len = ft_strlen(filename);
 	extension_len = ft_strlen(extension);
 	if (filename_len < extension_len)
-		return (-1);
+		exit(0);
 	filename += filename_len - extension_len;
 	while (*extension)
 	{
 		if (*filename != *extension)
-			return (-1);
+		{
+			write(1, "Error\n", 6);
+			exit(0);
+		}
 		filename++;
 		extension++;
 	}
-	return (0);
 }
 
 int	main(int ac, char **av)
@@ -38,8 +40,7 @@ int	main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		if (check_extension(av[1], ".ber") == -1)
-			error_exit(&sets);
+		check_extension(av[1], ".ber");
 		if (init_sets(&sets, av[1]) == -1)
 			error_exit(&sets);
 		load_map(&sets);
