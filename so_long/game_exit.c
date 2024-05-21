@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:07:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/19 17:52:32 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:47:31 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,4 @@ void	freevis(t_sets *sets, int idx)
 	}
 	free(sets->visited);
 	sets->visited = 0;
-}
-
-int	esc_hook(int keycode, t_sets *sets)
-{
-	if (keycode == 0xFF1B)
-	{
-		mlx_destroy_window(sets->mlx_ptr, sets->win_ptr);
-		mlx_destroy_display(sets->mlx_ptr);
-		free(sets->mlx_ptr);
-		freemap(sets, sets->row);
-		freevis(sets, sets->row);
-		close(sets->fd);
-		exit(0);
-	}
-	return (0);
 }

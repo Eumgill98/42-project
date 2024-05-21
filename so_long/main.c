@@ -49,7 +49,6 @@ int	main(int ac, char **av)
 		if (!sets.win_ptr)
 			error_exit(&sets);
 		map_draw(&sets);
-		mlx_key_hook(sets.win_ptr, esc_hook, &sets);
 		mlx_key_hook(sets.win_ptr, key_hook, &sets);
 		mlx_loop(sets.mlx_ptr);
 	}

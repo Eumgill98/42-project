@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:43:20 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/21 20:29:08 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:47:05 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ int	key_hook(int keycode, t_sets *sets)
 	int	t_row;
 	int	t_col;
 
-	if (keycode == 119 || keycode == 100 || keycode == 115 || keycode == 97)
+	if (keycode == 0xFF1B)
+		clear_game(sets);
+	else if (keycode == 119 || keycode == 100 || \
+		keycode == 115 || keycode == 97)
 	{
 		t_row = sets->player.player_r;
 		t_col = sets->player.player_c;
@@ -83,11 +86,12 @@ int	key_hook(int keycode, t_sets *sets)
 		if (!check_values(sets, sets->map[t_row][t_col], t_row, t_col))
 			return (0);
 		img_draw(sets, '0', sets->player.player_c * sets->imgs.i_w, \
-				sets->player.player_r * sets->imgs.i_h);
+		sets->player.player_r * sets->imgs.i_h);
 		player_draw(sets, t_col * sets->imgs.i_w, t_row * sets->imgs.i_h);
 		sets->player.player_r = t_row;
 		sets->player.player_c = t_col;
-		sets->player.movement++;
+		ft_putnbr_fd(++sets->player.movement, 1);
+		write(1, "\n", 1);
 	}
 	return (0);
 }
