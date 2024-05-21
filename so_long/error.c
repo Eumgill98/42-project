@@ -19,6 +19,7 @@ void	error_exit(t_sets *sets)
 	{
 		mlx_destroy_display(sets->mlx_ptr);
 		free(sets->mlx_ptr);
+		sets->mlx_ptr = NULL;
 	}
 	if (sets->map)
 		freemap(sets, sets->row);
