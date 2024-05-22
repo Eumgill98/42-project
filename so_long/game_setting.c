@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:28:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/20 17:53:21 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/22 18:05:38 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ static void	initialize_player_info(t_sets *sets)
 
 int	init_sets(t_sets *sets, char *map_path)
 {
-	initialize_sets(sets);
-	initialize_player_info(sets);
 	sets->fd = open(map_path, O_RDONLY);
 	if (sets->fd < 0)
 		return (-1);
+	initialize_sets(sets);
+	initialize_player_info(sets);
 	sets->mlx_ptr = mlx_init();
 	if (!sets->mlx_ptr)
 		return (-1);
