@@ -72,6 +72,8 @@ void	freemap_lst(t_sets *sets);
 void	freemap(t_sets *sets, int idx);
 void	freevis(t_sets *sets, int idx);
 void	freemap_flag(t_sets *sets);
+void	freeimg(t_sets *sets, void *img);
+void	all_freeimg(t_sets *sets);
 
 int		init_sets(t_sets *sets, char *map_path);
 

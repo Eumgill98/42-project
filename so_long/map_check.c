@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:47:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/20 17:54:30 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:59:32 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "so_long.h"
@@ -36,5 +36,9 @@ int	map_check(t_sets *sets)
 		return (-1);
 	sets->w_w = sets->col * sets->imgs.i_w;
 	sets->w_h = sets->row * sets->imgs.i_h;
+	sets->win_ptr = mlx_new_window(sets->mlx_ptr, \
+		sets->w_w, sets->w_h, "game");
+	if (!sets->win_ptr)
+		return (-1);
 	return (0);
 }
