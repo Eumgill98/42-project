@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:46:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/20 17:55:05 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:37:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # include <fcntl.h>
 # include <libft.h>
 # include "get_next_line.h"
+
+# define X_WINDOW 17
+# define KEY_ESC 0xFF1B
+# define KEY_W 119
+# define KEY_A 100
+# define KEY_S 115
+# define KEY_D 97
 
 typedef struct s_maps {
 	int	e_num;
@@ -90,4 +97,5 @@ int		img_draw(t_sets *sets, char flag, int x, int y);
 int		map_draw(t_sets *sets);
 
 int		key_hook(int keycode, t_sets *sets);
+int		clear_game(t_sets *sets);
 #endif

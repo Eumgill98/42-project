@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static void	clear_game(t_sets *sets)
+int	clear_game(t_sets *sets)
 {
 	all_freeimg(sets);
 	mlx_destroy_window(sets->mlx_ptr, sets->win_ptr);
@@ -49,22 +49,22 @@ static int	check_values(t_sets *sets, char c, int t_row, int t_col)
 
 static void	update_x_y(t_sets *sets, int keycode, int *t_row, int *t_col)
 {
-	if (keycode == 119)
+	if (keycode == KEY_W)
 	{
 		sets->player.direction = 0;
 		*t_row = *t_row - 1;
 	}
-	else if (keycode == 100)
+	else if (keycode == KEY_A)
 	{
 		sets->player.direction = 1;
 		*t_col = *t_col + 1;
 	}
-	else if (keycode == 115)
+	else if (keycode == KEY_S)
 	{
 		sets->player.direction = 2;
 		*t_row = *t_row + 1;
 	}
-	else if (keycode == 97)
+	else if (keycode == KEY_D)
 	{
 		sets->player.direction = 3;
 		*t_col = *t_col - 1;
@@ -76,10 +76,10 @@ int	key_hook(int keycode, t_sets *sets)
 	int	t_row;
 	int	t_col;
 
-	if (keycode == 0xFF1B)
+	if (keycode == KEY_ESC)
 		clear_game(sets);
-	else if (keycode == 119 || keycode == 100 || \
-		keycode == 115 || keycode == 97)
+	else if (keycode == KEY_W || keycode == KEY_A || \
+		keycode == KEY_S || keycode == KEY_D)
 	{
 		t_row = sets->player.player_r;
 		t_col = sets->player.player_c;
