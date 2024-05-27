@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 16:49:26 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/05/22 17:59:56 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:43:18 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int ac, char **av)
 			error_exit(&sets);
 		map_draw(&sets);
 		mlx_key_hook(sets.win_ptr, key_hook, &sets);
+		mlx_hook(sets.win_ptr, X_WINDOW, 0, clear_game, &sets);
 		mlx_loop(sets.mlx_ptr);
 	}
 }
