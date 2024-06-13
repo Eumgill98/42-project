@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
+/*   ft_dlstpop_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 20:03:14 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 20:07:06 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/13 21:10:17 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/13 21:24:57 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_dlst	*ft_dlstnew(char data)
+int	ft_dlstpop_back(t_stack *stack)
 {
-	t_dlst	*new;
+	t_dlst	*tmp;
 
-	new = (t_dlst *)malloc(sizeof(t_dlst));
-	if (!new)
-		return (NULL);
-	new->element = ft_atoi(data);
-	new->prev = NULL;
-	new->next = NULL;
-	return (new);
+	if (stack->tail == NULL)
+		return (-1);
+	tmp = stack->tail->prev;
+	ft_dlstdel_one(stack->tail);
+	if (tmp != NULL)
+		tmp->next = NULL;
+	stack->tail = tmp;
+	stack->size--;
+	return (0);
 }

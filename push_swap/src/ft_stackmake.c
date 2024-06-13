@@ -1,26 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
+/*   ft_stackmake.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 20:03:14 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 20:07:06 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/11 18:58:27 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/13 20:50:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_dlst	*ft_dlstnew(char data)
+void	ft_stackmake(t_stack *stack, char **s)
 {
-	t_dlst	*new;
-
-	new = (t_dlst *)malloc(sizeof(t_dlst));
-	if (!new)
-		return (NULL);
-	new->element = ft_atoi(data);
-	new->prev = NULL;
-	new->next = NULL;
-	return (new);
 }
