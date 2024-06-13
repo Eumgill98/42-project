@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack.c                                       :+:      :+:    :+:   */
+/*   ft_dlstdel_one.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 18:06:59 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/11 18:59:21 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/13 21:21:51 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/13 21:24:51 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_stack *init_stack(void)
+void	ft_dlstdel_one(t_dlst *dlst)
 {
-	t_stack *stack;
-
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (!stack)
-		return (-1);
-	stack->head = NULL;
-	stack->tail = NULL;
-	stack->size = 0;
-
-	return (stack);
+	if (dlst == NULL)
+		return ;
+	dlst->prev = NULL;
+	dlst->next = NULL;
+	free(dlst);
 }
