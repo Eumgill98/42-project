@@ -6,13 +6,13 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 20:08:44 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 20:36:08 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:49:44 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int	ft_dlstadd_back(t_stack *stack, char data)
+int	ft_dlstadd_back(t_stack *stack, char *data)
 {
 	t_dlst	*tmp;
 
@@ -26,7 +26,7 @@ int	ft_dlstadd_back(t_stack *stack, char data)
 	}
 	else
 	{
-		tmp->prev = tail;
+		tmp->prev = stack->tail;
 		stack->tail->next = tmp;
 		stack->tail = tmp;
 	}

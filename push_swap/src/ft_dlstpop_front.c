@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 21:01:58 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 21:23:55 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:19:40 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	ft_dlstpop_front(t_stack *stack)
 	ft_dlstdel_one(stack->head);
 	if (tmp != NULL)
 		tmp->prev = NULL;
+	else
+		stack->tail = NULL;
 	stack->head = tmp;
 	stack->size--;
 	return (0);

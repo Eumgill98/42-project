@@ -6,13 +6,13 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 20:03:14 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 20:07:06 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/17 15:18:00 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_dlst	*ft_dlstnew(char data)
+t_dlst	*ft_dlstnew(char *data)
 {
 	t_dlst	*new;
 

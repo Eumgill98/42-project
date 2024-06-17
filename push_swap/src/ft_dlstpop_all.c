@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stacklen.c                                      :+:      :+:    :+:   */
+/*   ft_dlstpop_all.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 19:09:58 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/17 15:43:30 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/17 15:20:28 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/17 15:44:57 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "stack.h"
 
-size_t	ft_stacklen(char **s)
+void	ft_dlstpop_all(t_stack *stack)
 {
-	size_t	size;
+	int	flag;
 
-	size = 0;
-	while (s[size])
-		size++;
-	return (size);
+	if (!stack)
+		return ;
+	flag = ft_dlstpop_front(stack);
+	while (flag != -1)
+		flag = ft_dlstpop_front(stack);
 }
