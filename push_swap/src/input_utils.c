@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stackmake.c                                     :+:      :+:    :+:   */
+/*   input_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 18:58:27 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/17 16:21:19 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/17 16:37:03 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/17 17:10:32 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap.h"
 
-int	ft_stackmake(t_stack *stack, char **s)
+static size_t	ft_dstrlen(char **s)
 {
-	int	idx;
+	size_t	len;
 
-	if (!s || !stack)
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}	
+
+int	check_input(char **s)
+{
+	size_t	len;
+	size_t	i;
+	size_t	j;
+
+	if (!s || !(*s))
 		return (-1);
-	idx = 0;
-	while (s[idx])
+	len = ft_dstrlen(s);
+	i = 0;
+	while (i < len)
 	{
-		if (ft_dlstadd_front(stack, s[idx]) == -1)
+		j = i + 1;
+		while (s[j])
 		{
-			ft_dlstpop_all(stack);
-			return (-1);
+			if (ft_atoi(s[i]) == ft_atoi(s[j]))
+				return (-1);
+			j++;
 		}
-		idx++;
+		i++;
 	}
-	// free s
-	return (0);
+	return (len);
 }
