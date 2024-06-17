@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:44:43 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 20:53:25 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:24:41 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,29 @@
 
 typedef struct s_dlst
 {
-	int		element;
-	s_dlst	*prev;
-	s_dlst	*next;
+	int				element;
+	struct s_dlst	*prev;
+	struct s_dlst	*next;
 }	t_dlst;
 
 typedef struct s_stack
 {
-	int		size;
+	size_t	size;
 	t_dlst	*head;
 	t_dlst	*tail;
 }	t_stack;
 
 t_stack	*ft_stackinit(void);
-void	ft_stackmake(t_stack *stack, char **s);
+int		ft_stackmake(t_stack *stack, char **s);
 
-int		ft_stacklen(char **s);
+size_t	ft_stacklen(char **s);
 
-t_dlst	*ft_dlstnew(char data);
-int		ft_dlstadd_back(t_stack *stack, char data);
-int		ft_dlstadd_front(t_stack *stack, char data);
+t_dlst	*ft_dlstnew(char *data);
+void	ft_dlstdel_one(t_dlst *dlst);
+int		ft_dlstadd_back(t_stack *stack, char *data);
+int		ft_dlstadd_front(t_stack *stack, char *data);
+int		ft_dlstpop_back(t_stack *stack);
+int		ft_dlstpop_front(t_stack *stack);
+void	ft_dlstpop_all(t_stack *stack);
+
 #endif
