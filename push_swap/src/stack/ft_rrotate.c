@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstadd_front.c                                 :+:      :+:    :+:   */
+/*   ft_rrotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 20:26:56 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/19 17:00:06 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/19 17:40:30 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/19 17:42:48 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int	ft_dlstadd_front(t_stack *stack, int data)
+int	ft_rrotate(t_stack *stack)
 {
-	t_dlst	*tmp;
+	int	tmp;
 
-	tmp = ft_dlstnew(data);
-	if (!tmp)
+	if (!stack || !stack->head || stack->size <= 1)
 		return (-1);
-	if (stack->head == NULL)
-	{
-		stack->head = tmp;
-		stack->tail = tmp;
-	}
-	else
-	{
-		tmp->next = stack->head;
-		stack->head->prev = tmp;
-		stack->head = tmp;
-	}
-	stack->size++;
+	tmp = stack->tail->element;
+	ft_dlstpop_back(stack);
+	ft_dlstadd_front(stack, tmp);
 	return (0);
 }

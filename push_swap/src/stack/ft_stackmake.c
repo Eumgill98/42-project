@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 18:58:27 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/17 17:09:47 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/19 16:59:28 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_stackmake(t_stack *stack, char **s)
 	idx = 0;
 	while (s[idx])
 	{
-		if (ft_dlstadd_back(stack, s[idx]) == -1)
+		if (ft_dlstadd_back(stack, ft_atoi(s[idx])) == -1)
 		{
 			ft_dlstpop_all(stack);
 			return (-1);

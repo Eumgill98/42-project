@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 21:21:51 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/13 21:24:51 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/19 17:01:14 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	ft_dlstdel_one(t_dlst *dlst)
 		return ;
 	dlst->prev = NULL;
 	dlst->next = NULL;
+	dlst->element = 0;
 	free(dlst);
 }
