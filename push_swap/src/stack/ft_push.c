@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstadd_front.c                                 :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 20:26:56 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/19 17:00:06 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/06/19 16:44:30 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/06/19 17:05:19 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "stack.h"
 
-int	ft_dlstadd_front(t_stack *stack, int data)
+int	ft_push(t_stack *on_stack, t_stack *to_stack)
 {
-	t_dlst	*tmp;
+	int	tmp;
 
-	tmp = ft_dlstnew(data);
-	if (!tmp)
+	if (!on_stack || !to_stack || on_stack->size == 0)
 		return (-1);
-	if (stack->head == NULL)
-	{
-		stack->head = tmp;
-		stack->tail = tmp;
-	}
-	else
-	{
-		tmp->next = stack->head;
-		stack->head->prev = tmp;
-		stack->head = tmp;
-	}
-	stack->size++;
+	tmp = one_stack->head->element;
+	ft_dlstpop_front(on_stack);
+	ft_dlstadd_front(to_stack);
 	return (0);
 }
