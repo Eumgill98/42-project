@@ -6,35 +6,21 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:37:03 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/25 16:22:23 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/26 20:08:40 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	check_duplication(char *s1, char *s2)
+int	ps_input(int ac, char **av)
 {
-	if (ft_atoi(s1) == ft_atoi(s2))
-		return (-1);
-	return (0);
-}
-
-static int	check_wrong_form(char *s)
-{
-	int	idx;
-
-	idx = 0;
-	while (s[idx])
-	{
-		if (!((*s >= '0' && *s <= '9') \
-			|| *s == '+' || *s == '-'))
-			return (-1);
-		idx++;
-	}
-	return (0);
-}
-
-int	ps_input(char **s, int len)
-{
-	// 부호 
+	char	**tmp;
+	// input의 형태가 2개임
+	// ./push_swap 2 1 3 6 5 8 
+	// ./push_swap "4 67 3 87 23" 
+	
+	tmp = &av[1];
+	if (ac == 2)
+		tmp = ft_split(tmp[0]);
+	
 }
