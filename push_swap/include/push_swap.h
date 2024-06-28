@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:45:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/26 19:55:16 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/06/28 18:08:33 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include "stack.h"
 
-int	ps_input(int ac, char **av);
+char	**ps_input(int ac, char **av);
+
+int	check_overflow(char **s);
+int	check_dup(char **s);
+int	check_form(char **s);
+
 
 #endif
