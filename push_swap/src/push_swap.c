@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_input.c                                         :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 16:37:03 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 16:45:13 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/04 16:32:05 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/04 17:39:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**ps_input(int ac, char **av)
+int	main(int ac, char **av)
 {
-	char	**tmp;
+	char		**inputs;
+	t_ps_stacks	*stacks;
 
-	tmp = &av[1];
-	if (ac == 2)
-		tmp = ft_split(tmp[0]);
-	if (!tmp)
-		return (NULL);
-	if (check_form(tmp) == -1 || \
-		check_overflow(tmp) == -1 || \
-			check_dup(tmp) == -1)
+	if (ac < 2)
+		return (0);
+	else
 	{
-		ps_free_input(tmp);
-		return (NULL);
+		inputs = ps_input(ac, av);
+		if (!inputs)
+			return (0);
+		stacks = ps_init_stacks();
+		if (!stacks)
+		{
+			ps_free_input(inputs);
+			return (0);
+		}
 	}
-	return (tmp);
+	return (0);
 }
