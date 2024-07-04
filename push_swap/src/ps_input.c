@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:37:03 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 16:45:13 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:54:21 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**ps_input(int ac, char **av)
 
 	tmp = &av[1];
 	if (ac == 2)
-		tmp = ft_split(tmp[0]);
+		tmp = ft_split(tmp[0], ' ');
 	if (!tmp)
 		return (NULL);
 	if (check_form(tmp) == -1 || \

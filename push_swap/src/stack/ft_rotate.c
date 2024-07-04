@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 17:36:56 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/19 17:40:13 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/04 18:04:25 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_rotate(t_stack *stack)
 {
 	int	tmp;
 
-	if (!stack || !stack->head || !stack->size <= 1)
+	if (!stack || !stack->head || !(stack->size <= 1))
 		return (-1);
 	tmp = stack->head->element;
 	ft_dlstpop_front(stack);
