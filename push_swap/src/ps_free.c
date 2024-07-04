@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_input.c                                         :+:      :+:    :+:   */
+/*   ps_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 16:37:03 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 16:45:13 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/04 16:37:33 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/04 17:22:30 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**ps_input(int ac, char **av)
+void	ps_free_stacks(t_ps_stacks *stacks)
 {
-	char	**tmp;
+	if (stacks->stack_a)
+		ft_stackfree(stacks->stack_a);
+	if (stacks->stack_b)
+		ft_stackfree(stacks->stack_b);
+	free(stacks);
+}
 
-	tmp = &av[1];
-	if (ac == 2)
-		tmp = ft_split(tmp[0]);
-	if (!tmp)
-		return (NULL);
-	if (check_form(tmp) == -1 || \
-		check_overflow(tmp) == -1 || \
-			check_dup(tmp) == -1)
+void	ps_free_input(char **s)
+{
+	int	idx;
+
+	idx = 0;
+	while (s[idx])
 	{
-		ps_free_input(tmp);
-		return (NULL);
+		free(s[idx]);
+		s[idx] = NULL;
+		idx++;
 	}
-	return (tmp);
+	free(s);
 }
