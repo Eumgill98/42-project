@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:05:47 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/28 21:46:36 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/04 17:52:21 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	check_form(char **s)
 			return (-1);
 		while (s[i][j])
 		{
-			if !(s[i][j] >= '0' || s[i][j] <= '9')
+			if (!(s[i][j] >= '0' || s[i][j] <= '9'))
 				return (-1);
 			j++;
 		}
