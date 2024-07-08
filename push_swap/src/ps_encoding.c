@@ -21,7 +21,8 @@ int  ps_encoding(const char *command)
     num = 0;
     while (command[idx])
     {
-        num += ((10 ** idx) * command[idx]);
+        num *= 10;
+        num += command[idx];
         idx++;
     }
     return (num % 42);
