@@ -16,7 +16,7 @@ int	ft_rotate(t_stack *stack)
 {
 	int	tmp;
 
-	if (!stack || !stack->head || !(stack->size <= 1))
+	if (!stack || !stack->head || stack->size <= 1)
 		return (-1);
 	tmp = stack->head->element;
 	ft_dlstpop_front(stack);
