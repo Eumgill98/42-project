@@ -33,4 +33,7 @@ int			ft_atoil(const char *nptr, int *overflow);
 void		ps_free_stacks(t_ps_stacks *stacks);
 void		ps_free_input(char **s);
 
+int			ps_encoding(const char *command);
+int 		ps_functions(t_ps_stacks *stacks, const char *command);
+
 #endif
