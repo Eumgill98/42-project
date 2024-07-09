@@ -6,13 +6,13 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:57:46 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/09 15:46:53 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:13:47 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_ps_stacks	*ps_init_stacks(char **inputs, int ac)
+t_ps_stacks	*ps_init_stacks(char **inputs)
 {
 	t_ps_stacks	*tmp;
 

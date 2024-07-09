@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:45:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 18:30:41 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/09 16:06:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "stack.h"
+# include <unistd.h>
 
 typedef struct s_ps_stacks
 {
@@ -35,5 +36,7 @@ void		ps_free_input(char **s);
 
 int			ps_encoding(const char *command);
 int 		ps_functions(t_ps_stacks *stacks, const char *command);
+
+void		ps_exit(void);
 
 #endif
