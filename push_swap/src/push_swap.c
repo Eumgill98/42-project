@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:32:05 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 17:52:45 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:45:52 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ int	main(int ac, char **av)
 		if (!inputs)
 			return (0);
 		stacks = ps_init_stacks(inputs);
+		if (ac == 2)
+			ps_free_inputs(inputs);
 		if (!stacks)
-		{
-			ps_free_input(inputs);
 			return (0);
-		}
 	}
 	return (0);
 }
