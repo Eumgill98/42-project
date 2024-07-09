@@ -6,24 +6,24 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:57:46 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 17:36:45 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:14:45 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int  ps_encoding(const char *command)
+int	ps_encoding(const char *command)
 {
-    int idx;
-    int num;
+	int	idx;
+	int	num;
 
-    if (!command)
-        return (-1);
-    idx = 0;
-    num = 0;
-    while (command[idx])
-    {
-        num *= 10;
-        num += command[idx];
-        idx++;
-    }
-    return (num % 42);
+	if (!command)
+		return (-1);
+	idx = 0;
+	num = 0;
+	while (command[idx])
+	{
+		num *= 10;
+		num += command[idx];
+		idx++;
+	}
+	return (num % 42);
 }
