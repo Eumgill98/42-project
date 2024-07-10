@@ -39,6 +39,8 @@ int 		ps_functions(t_ps_stacks *stacks, const char *command);
 
 int			ps_sort_check(t_stack *stack);
 int			ps_rsort_check(t_stack *stack);
+int			ps_sort(t_stack *stack);
+int			ps_make_idx(t_stack *stack);
 
 void		ps_exit(void);
 
