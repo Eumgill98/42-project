@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
+/*   ft_stackcopy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 20:03:14 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/19 17:06:06 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/04 17:14:13 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/04 17:19:00 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_dlst	*ft_dlstnew(int data)
+t_stack *ft_stackcopy(t_stack *origin_stack)
 {
-	t_dlst	*new;
+    t_stack *new_stack;
+    t_dlst  *tmp;
 
-	new = (t_dlst *)malloc(sizeof(t_dlst));
-	if (!new)
-		return (NULL);
-	new->element = data;
-	new->idx = -1;
-	new->prev = NULL;
-	new->next = NULL;
-	return (new);
+    new_stack = ft_stackinit();
+    if (!new_stack)
+        return (NULL);
+    tmp = origin_stack->head;
+    while(tmp)
+    {
+        if (ft_dlstadd_back(new_stack, tmp->element) == -1)
+        {
+            ft_dlstpop_all(new_stack);
+            return(NULL);
+        }
+        tmp = tmp->next;
+    }
+    return (new_stack);
 }

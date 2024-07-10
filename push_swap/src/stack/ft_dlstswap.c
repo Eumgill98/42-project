@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstnew.c                                       :+:      :+:    :+:   */
+/*   ft_dlstswap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 20:03:14 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/06/19 17:06:06 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/09 16:57:28 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/09 16:57:33 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_dlst	*ft_dlstnew(int data)
+int ft_dlstswap(t_dlst *node_a, t_dlst *node_b)
 {
-	t_dlst	*new;
+    int tmp;
 
-	new = (t_dlst *)malloc(sizeof(t_dlst));
-	if (!new)
-		return (NULL);
-	new->element = data;
-	new->idx = -1;
-	new->prev = NULL;
-	new->next = NULL;
-	return (new);
+    if (!node_a || !node_b)
+        return (-1);
+    tmp = node_a->element;
+    node_a->element = node_b->element;
+    node_b->element = tmp;
+    return (0);
 }

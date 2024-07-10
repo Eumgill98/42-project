@@ -19,6 +19,7 @@
 typedef struct s_dlst
 {
 	int				element;
+	int				idx;
 	struct s_dlst	*prev;
 	struct s_dlst	*next;
 }	t_dlst;
@@ -32,10 +33,12 @@ typedef struct s_stack
 
 t_stack	*ft_stackinit(void);
 int		ft_stackmake(t_stack *stack, char **s);
+t_stack	*ft_stackcopy(t_stack *origin_stack);
 
 size_t	ft_stacklen(char **s);
 
 t_dlst	*ft_dlstnew(int data);
+int		ft_dlstswap(t_dlst *node_a, t_dlst *node_b);
 void	ft_dlstdel_one(t_dlst *dlst);
 int		ft_dlstadd_back(t_stack *stack, int data);
 int		ft_dlstadd_front(t_stack *stack, int data);
