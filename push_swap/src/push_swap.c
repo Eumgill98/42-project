@@ -21,12 +21,7 @@ int	main(int ac, char **av)
 		ps_exit();
 	else
 	{
-		inputs = ps_input(ac, av);
-		if (!inputs)
-			ps_exit();
-		stacks = ps_init_stacks(inputs);
-		if (ac == 2)
-			ps_free_input(inputs);
+		stacks = ps_init_stacks();
 		if (!stacks)
 			ps_exit();
 		//run

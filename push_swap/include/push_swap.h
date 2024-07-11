@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:45:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/11 15:47:02 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:44:45 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef struct s_ps_stacks
 	t_stack	*stack_b;
 }	t_ps_stacks;
 
-t_ps_stacks	*ps_init_stacks(char **inputs);
-char		**ps_input(int ac, char **av);
+t_ps_stacks	*ps_init_stacks(void);
 
+int			ps_input(int ac, char **av, t_ps_stacks *stacks);
 int			check_overflow(char **s);
-int			check_dup(char **s);
+int			check_dup(t_stack *stack);
 int			check_form(char **s);
 
 int			ft_atoil(const char *nptr, int *overflow);

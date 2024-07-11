@@ -5,28 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/17 16:37:03 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 17:54:21 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/11 16:13:03 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/11 16:40:14 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**ps_input(int ac, char **av)
+int	ps_input(int ac, char **av, t_ps_stacks *stacks)
 {
-	char	**tmp;
+	char	**s;
+	int		idx;
 
-	tmp = &av[1];
-	if (ac == 2)
-		tmp = ft_split(tmp[0], ' ');
-	if (!tmp)
-		return (NULL);
-	if (check_form(tmp) == -1 || \
-		check_overflow(tmp) == -1 || \
-			check_dup(tmp) == -1)
+	idx = 1;
+	while (idx < ac)
 	{
-		ps_free_input(tmp);
-		return (NULL);
+		s = ft_split(av[idx], ' ');
+		if (check_overflow(s) == -1 || \
+			check_form(s) == -1 || \
+			ft_stackappend(stacks->stack_a, s) == -1)
+		{
+			ps_free_input(s);
+			ps_free_stacks(stacks);
+			return (-1);
+		}
+		ps_free_input(s);
+		idx++;
 	}
-	return (tmp);
+	if (check_dup(stacks->stack_a) == -1)
+	{
+		ps_free_stacks(stacks);
+		return (-1);
+	}
+	return (0);
 }

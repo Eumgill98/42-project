@@ -32,7 +32,7 @@ typedef struct s_stack
 }	t_stack;
 
 t_stack	*ft_stackinit(void);
-int		ft_stackmake(t_stack *stack, char **s);
+int		ft_stackappend(t_stack *stack, char **s);
 t_stack	*ft_stackcopy(t_stack *origin_stack);
 
 size_t	ft_stacklen(char **s);
