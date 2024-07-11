@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 18:05:47 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 17:52:21 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/11 16:32:01 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,22 @@ int	check_overflow(char **s)
 	return (0);
 }
 
-int	check_dup(char **s)
+int	check_dup(t_stack *stack)
 {
-	int	i;
-	int	j;
-	int	now;
+	t_dlst	*tmp;
+	t_dlst	*tmp_n;
 
-	i = 0;
-	while (s[i])
+	tmp = stack->head;
+	while (tmp)
 	{
-		j = i + 1;
-		now = ft_atoi(s[i]);
-		while (s[j])
+		tmp_n = tmp->next;
+		while (tmp_n)
 		{
-			if (now == ft_atoi(s[j]))
+			if (tmp->element == tmp_n->element)
 				return (-1);
-			j++;
+			tmp_n = tmp_n->next;
 		}
-		i++;
+		tmp = tmp->next;
 	}
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_ps_stacks	*ps_init_stacks(char **inputs)
+t_ps_stacks	*ps_init_stacks(void)
 {
 	t_ps_stacks	*tmp;
 
@@ -22,11 +22,6 @@ t_ps_stacks	*ps_init_stacks(char **inputs)
 	tmp->stack_a = ft_stackinit();
 	tmp->stack_b = ft_stackinit();
 	if (!tmp->stack_b)
-	{
-		ps_free_stacks(tmp);
-		return (NULL);
-	}
-	if (ft_stackmake(tmp->stack_a, inputs) == -1)
 	{
 		ps_free_stacks(tmp);
 		return (NULL);
