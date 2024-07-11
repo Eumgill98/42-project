@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:57:46 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/09 15:20:35 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/11 17:42:57 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,12 @@ int	ps_rrotate(t_ps_stacks *stacks, int c_idx)
 	return (-1);
 }
 
-int	ps_functions(t_ps_stacks *stacks, const char *command)
+int	ps_functions(t_ps_stacks *stacks, const char *command, int flag)
 {
 	int	c_idx;
 
+	if (flag)
+		ps_printstr(command);
 	c_idx = ps_encoding(command);
 	if (c_idx == 29 || c_idx == 30 || c_idx == 5)
 		return (ps_swap(stacks, c_idx));
