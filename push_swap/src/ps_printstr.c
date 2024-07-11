@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlstdel_one.c                                   :+:      :+:    :+:   */
+/*   ps_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 21:21:51 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/11 17:22:18 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/11 17:43:06 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/11 17:47:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap.h"
 
-void	ft_dlstdel_one(t_dlst *dlst)
+void	ps_printstr(const char *s)
 {
-	if (dlst == NULL)
-		return ;
-	dlst->prev = NULL;
-	dlst->next = NULL;
-	dlst->element = 0;
-	dlst->idx = -1;
-	free(dlst);
+	int	idx;
+
+	idx = 0;
+	while (s[idx])
+	{
+		write(1, &s[idx], 1);
+		idx++;
+	}
+	write(1, "\n", 1);
 }

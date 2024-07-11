@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 16:57:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/11 15:42:53 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:20:36 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,20 @@ static int	insert_idx(t_stack *origin, t_stack *copy)
 	return (0);
 }
 
+static int	idxeing(t_stack *stack)
+{
+	t_dlst	*tmp;
+
+	tmp = stack->head;
+	while (tmp)
+	{
+		tmp->element = tmp->idx;
+		tmp->idx = -1;
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 int	ps_make_idx(t_stack *stack)
 {
 	t_stack	*new_stack;
@@ -66,6 +80,7 @@ int	ps_make_idx(t_stack *stack)
 		return (-1);
 	bubble_sort(new_stack);
 	insert_idx(stack, new_stack);
+	idxeing(stack);
 	ft_stackfree(new_stack);
 	return (0);
 }

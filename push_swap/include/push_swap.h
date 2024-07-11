@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:45:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/11 16:44:45 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:18:25 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,16 @@ void		ps_free_stacks(t_ps_stacks *stacks);
 void		ps_free_input(char **s);
 
 int			ps_encoding(const char *command);
-int			ps_functions(t_ps_stacks *stacks, const char *command);
+int			ps_functions(t_ps_stacks *stacks, const char *command, int flag);
 
 int			ps_sort_check(t_stack *stack);
 int			ps_rsort_check(t_stack *stack);
-int			ps_sort(t_stack *stack);
+int			ps_sort(t_ps_stacks *stack);
 int			ps_make_idx(t_stack *stack);
 
+void		ps_sort_big(t_ps_stacks *stacks);
+
+void		ps_printstr(const char *s);
 void		ps_exit(void);
 
 #endif
