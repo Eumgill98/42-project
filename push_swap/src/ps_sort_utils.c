@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 14:11:39 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/15 17:48:24 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/15 18:20:28 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ps_pb_idx(t_ps_stacks *stacks, int idx, int size)
 			ps_functions(stacks, "rra", 1);
 		}
 	}
-	else if (idx == 5)
+	else if (idx == 4)
 		ps_functions(stacks, "rra", 1);
 	ps_functions(stacks, "pb", 1);
 	return (0);
