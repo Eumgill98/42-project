@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:42:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/15 15:03:50 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:18:04 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,10 @@ static int	ps_four_sort(t_ps_stacks *stacks)
 static int	ps_five_sort(t_ps_stacks *stacks)
 {
 	int	min_idx;
-	int	max_idx;
 
 	min_idx = ps_min_idx(stacks);
 	ps_pb_idx(stacks, min_idx, 5);
-	max_idx = ps_max_idx(stacks);
-	ps_pb_idx(stacks, max_idx, 4);
-	ps_three_sort(stacks);
+	ps_four_sort(stacks);
 	ps_functions(stacks, "pa", 1);
 	return (0);
 }
@@ -72,7 +69,7 @@ void	ps_sort_small(t_ps_stacks *stacks)
 {
 	int	total_size;
 
-	total_size = stacks->stacks_a->size;
+	total_size = stacks->stack_a->size;
 	if (total_size == 2)
 		ps_two_sort(stacks);
 	else if (total_size == 3)
