@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 16:32:05 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/11 18:23:29 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/15 16:51:15 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int	main(int ac, char **av)
 {
 	t_ps_stacks	*stacks;
 
-	if (ac < 2)
-		ps_exit();
-	else
+	if (ac >= 2)
 	{
 		stacks = ps_init_stacks();
 		if (!stacks)

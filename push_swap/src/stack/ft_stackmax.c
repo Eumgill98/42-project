@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 16:57:37 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/12 17:04:48 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:57:59 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_stackmax(t_stack *stack)
 	int		max;
 	t_dlst	*tmp;
 
-	tmp = stacks->head;
+	tmp = stack->head;
 	max = tmp->element;
 	while (tmp)
 	{
@@ -25,5 +25,5 @@ int	ft_stackmax(t_stack *stack)
 			max = tmp->element;
 		tmp = tmp->next;
 	}
-	return (tmp);
+	return (max);
 }
