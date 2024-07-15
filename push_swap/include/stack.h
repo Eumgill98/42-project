@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:44:43 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/04 17:20:02 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/12 17:06:59 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,9 @@ int		ft_swap(t_stack *stack);
 int		ft_push(t_stack *on_stack, t_stack *to_stack);
 int		ft_rotate(t_stack *stack);
 int		ft_rrotate(t_stack *stack);
+
+int		ft_stackmax(t_stack *stack);
+int		ft_stackmin(t_stack *stack);
+int		ft_find_idx(t_stack *stack, int element);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 16:45:22 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/11 18:18:25 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/15 15:05:17 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,12 @@ int			ps_rsort_check(t_stack *stack);
 int			ps_sort(t_ps_stacks *stack);
 int			ps_make_idx(t_stack *stack);
 
+int			ps_check_case(t_dlst *head);
+int			ps_max_idx(t_ps_stacks *stacks);
+int			ps_min_idx(t_ps_stacks *stacks);
+int			ps_pb_idx(t_ps_stacks *stacks, int idx, int size);
 void		ps_sort_big(t_ps_stacks *stacks);
+void		ps_sort_small(t_ps_stacks *stacks);
 
 void		ps_printstr(const char *s);
 void		ps_exit(void);
