@@ -6,11 +6,26 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:08 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/24 19:41:16 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/24 20:04:15 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+char	*pi_path_join(char *s1, char *s2)
+{
+	char	*tmp;
+	char	*result;
+
+	tmp = ft_strjoin(s1, "/");
+	if (!tmp)
+		return (NULL);
+	result = ft_strjoin(tmp, s2);
+	free(tmp);
+	if (!result)
+		return (NULL);
+	return (result);
+}
 
 char	*pi_env_find(char **env)
 {
@@ -41,7 +56,9 @@ char	*pi_env_access(char **envs, char *command)
 	idx = 0;
 	while (envs[idx])
 	{
-		joined = ft_strjoin(envs[idx], command);
+		joined = pi_path_join(envs[idx], command);
+		if (!joined)
+			return (NULL);
 		if (access(joined, X_OK) == 0)
 		{
 			free(joined);
