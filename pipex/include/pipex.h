@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:12:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/24 20:04:56 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/24 20:15:55 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_pipeinfo
 	char	**envs;
 }	t_pipeinfo;
 
-void	pi_freedstr(char **commands, int idx);
+void	pi_freedstr(char **dstr, int idx);
+void	pi_freeinfo(t_pipeinfo *info);
 
 char	**pi_command(int ac, char **av);
 
