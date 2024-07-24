@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:22:44 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/24 16:38:35 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/24 19:38:19 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	**pi_command(int ac, char **av)
 		idx++;
 		c_idx++;
 	}
-	commands[idx] == NULL;
+	commands[idx] = NULL;
 	return (commands);
 }
