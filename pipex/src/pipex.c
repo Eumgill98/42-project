@@ -20,7 +20,7 @@ int	main(int ac, char **av, char **env)
 	if (ac == 5)
 	{
 		if (pi_init_info == -1)
-			pi_freeinfo(&info);
+			pi_exit(&info);
 	}
 	return (0);
 }
