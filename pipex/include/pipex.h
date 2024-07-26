@@ -25,6 +25,8 @@ typedef struct s_pipeinfo
 	char	**envs;
 }	t_pipeinfo;
 
+void	pi_exit(t_pipeinfo *info);
+
 void	pi_freedstr(char **dstr, int idx);
 void	pi_freeinfo(t_pipeinfo *info);
 

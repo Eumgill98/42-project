@@ -34,6 +34,6 @@ char	**pi_command(int ac, char **av)
 		idx++;
 		c_idx++;
 	}
-	commands[idx] = NULL;
+	commands[c_idx] = NULL;
 	return (commands);
 }
