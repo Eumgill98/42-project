@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_h"
+#include "pipex.h"
 
 int	pi_init_info(int ac, char **av, char **env, t_pipeinfo *info)
 {
