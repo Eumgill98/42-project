@@ -41,4 +41,5 @@ void	pi_freedstr(char **dstr, int idx)
 		dstr[idx] = NULL;
 		i++;
 	}
+	free(dstr);
 }
