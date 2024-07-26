@@ -28,6 +28,8 @@ typedef struct s_pipeinfo
 void	pi_freedstr(char **dstr, int idx);
 void	pi_freeinfo(t_pipeinfo *info);
 
+int		pi_init_info(int ac, char **av, char **env, t_pipeinfo *info);
+
 char	**pi_command(int ac, char **av);
 
 char	*pi_path_join(char *s1, char *s2);
