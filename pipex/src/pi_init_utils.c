@@ -1,32 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pi_info_utils.c                                    :+:      :+:    :+:   */
+/*   pi_init_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/26 20:16:00 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/27 16:28:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	pi_init_info(int ac, char **av, char **env, t_pipeinfo *info)
+t_pipeinfo	*pi_init_allocate(void)
 {
-	char	**commands;
-	char	**envs;
-	char	*path;
+	t_pipeinfo	*tmp;
 
-	commands = pi_command(ac, av);
+	tmp = (t_pipeinfo *)malloc(sizeof(t_pipeinfo));
+	if (!tmp)
+		return (NULL);
+	tmp->commands = NULL;
+	tmp->envs = NULL;
+	return (tmp);
+}
+
+t_pipeinfo	*pi_init_info(int ac, char **av, char **env)
+{
+	char		**commands;
+	char		**envs;
+	char		*path;
+	t_pipeinfo	*t_info;
+
+	t_info = pi_init_allocate();
+	if (!t_info)
+		return (NULL);
 	path = pi_env_find(env);
 	if (!path)
-		return (-1);
+		return (NULL);
 	envs = pi_env_split(path);
-	free(path);
-	info->commands = commands;
-	info->envs = envs;
+	commands = pi_command(ac, av);
+	t_info->commands = commands;
+	t_info->envs = envs;
 	if (!commands || !envs)
-		return (-1);
-	return (0);
+	{
+		pi_freeinfo(t_info);
+		return (NULL);
+	}
+	return (t_info);
 }
