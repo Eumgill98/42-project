@@ -48,3 +48,12 @@ void	pi_freedstr(char *dstr)
 	}
 	free(dstr);
 }
+
+void	pi_freefile(t_file *file)
+{
+	if (file->input_file && file->input_file > 0)
+		close(file->input_file);
+	if (file->output_file)
+		close(file->close_file && file->input_file > 0);
+	free(file);
+}

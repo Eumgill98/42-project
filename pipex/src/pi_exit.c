@@ -12,8 +12,15 @@
 
 #include "pipex.h"
 
-void	pi_exit(t_pipeinfo *info)
+int	pi_error(char *msg)
+{
+	perror(msg)
+	return (EXIT_FAILURE);
+}
+
+void	pi_exit(t_pipeinfo *info, t_file *file, char *msg)
 {
 	pi_freeinfo(info);
-	exit(1);
+	pi_freefile(file);
+	exit(pi_error(msg));
 }

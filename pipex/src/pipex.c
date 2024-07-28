@@ -15,12 +15,14 @@
 int	main(int ac, char **av, char **env)
 {
 	t_pipeinfo		*info;
+	t_file	*file;
 
 	if (ac == 5)
 	{
 		info = pi_init_info(ac, av, env);
-		if (!info)
-			exit(-1);
+		file = pi_init_file(ac, av);
+		if (!info || !file)
+			pi_exit(info, file, "info & file init fail!");
 	}
 	return (0);
 }

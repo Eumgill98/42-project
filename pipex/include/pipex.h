@@ -22,15 +22,27 @@
 typedef struct s_pipeinfo
 {
 	char	**commands;
+	int		num_commands;
 	char	**envs;
 }	t_pipeinfo;
 
+typedef struct s_file
+{
+	int	input_file;
+	int	output_file;
+}	t_file;
+
 t_pipeinfo	*pi_init_info(int ac, char **av, char **env);
-void		pi_exit(t_pipeinfo *info);
+t_file	*pi_init_file(int ac , char **av);
+int		pi_dstrlen(char **dstr);
+
+int		pi_error(char *msg);
+void		pi_exit(t_pipeinfo *info, t_file *file, char **msg);
 
 void		pi_freedstr_idx(char **dstr, int idx);
 void		pi_freedstr(char **dstr);
 void		pi_freeinfo(t_pipeinfo *info);
+void		pi_freefile(t_file *file);
 
 char		**pi_command(int ac, char **av);
 
