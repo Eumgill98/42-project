@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:41:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 17:45:31 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/29 20:32:25 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	pi_execute(t_pipeinfo *info, char *command)
 	char	**commands;
 	int		flag;
 
-	path = pi_env_access(info->envs, command);
 	commands = ft_split(command, ' ');
+	path = pi_env_access(info->envs, commands[0]);
 	if (!path || !commands)
 		return (-1);
 	flag = execve(path, commands, NULL);
