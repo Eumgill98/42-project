@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/27 16:28:03 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/29 18:31:35 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_pipeinfo	*pi_init_info_allocate(void)
 		return (NULL);
 	tmp->commands = NULL;
 	tmp->envs = NULL;
+	tmp->num_commands = 0;
 	return (tmp);
 }
 
@@ -41,8 +42,8 @@ t_file	*pi_init_file_allocate(void)
 	tmp = (t_file *)malloc(sizeof(t_file));
 	if (!tmp)
 		return (NULL);
-	tmp->input_file = NULL;
-	tmp->output_file = NULL;
+	tmp->input_file = -1;
+	tmp->output_file = -1;
 	return (tmp);
 }
 
@@ -75,6 +76,8 @@ t_pipeinfo	*pi_init_info(int ac, char **av, char **env)
 t_file	*pi_init_file(int ac, char **av)
 {
 	t_file	*file;
+	int		infile;
+	int		outfile;
 
 	file = pi_init_file_allocate();
 	if (!file)

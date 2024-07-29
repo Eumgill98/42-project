@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:22:44 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/24 19:38:19 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:30:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**pi_command(int ac, char **av)
 		commands[c_idx] = ft_strdup(av[idx]);
 		if (!commands[c_idx])
 		{
-			pi_freedstr(commands, c_idx);
+			pi_freedstr_idx(commands, c_idx);
 			return (NULL);
 		}
 		idx++;

@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pi_exit.c                                          :+:      :+:    :+:   */
+/*   pi_execute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/27 15:52:41 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/27 15:52:43 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/07/29 16:41:33 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/07/29 17:45:31 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	pi_error(char *msg)
+int	pi_execute(t_pipeinfo *info, char *command)
 {
-	perror(msg)
-	return (EXIT_FAILURE);
-}
+	char	*path;
+	char	**commands;
+	int		flag;
 
-void	pi_exit(t_pipeinfo *info, t_file *file, char *msg)
-{
-	pi_freeinfo(info);
-	pi_freefile(file);
-	exit(pi_error(msg));
+	path = pi_env_access(info->envs, command);
+	commands = ft_split(command, ' ');
+	if (!path || !commands)
+		return (-1);
+	flag = execve(path, commands, NULL);
+	free(path);
+	if (flag == -1)
+		return (-1);
+	return (0);
 }
