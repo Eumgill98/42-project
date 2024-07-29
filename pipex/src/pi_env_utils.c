@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:40:08 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 16:52:06 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/29 20:33:42 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	*pi_env_access(char **envs, char *command)
 	char	*joined;
 
 	idx = 0;
+	if (!envs || !command)
+		return (NULL);
 	while (envs[idx])
 	{
 		joined = pi_path_join(envs[idx], command);
@@ -62,7 +64,7 @@ char	*pi_env_access(char **envs, char *command)
 		if (access(joined, X_OK) == 0)
 		{
 			free(joined);
-			return (ft_strdup(envs[idx]));
+			return (pi_path_join(envs[idx], command));
 		}
 		idx++;
 		free(joined);
