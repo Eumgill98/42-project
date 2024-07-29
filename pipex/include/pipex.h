@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:12:33 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/27 16:42:50 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:33:49 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ typedef struct s_file
 }	t_file;
 
 t_pipeinfo	*pi_init_info(int ac, char **av, char **env);
-t_file	*pi_init_file(int ac , char **av);
-int		pi_dstrlen(char **dstr);
+t_file		*pi_init_file(int ac, char **av);
+int			pi_dstrlen(char **dstr);
 
-int		pi_error(char *msg);
-void		pi_exit(t_pipeinfo *info, t_file *file, char **msg);
+int			pi_error(char *msg);
+void		pi_exit(t_pipeinfo *info, t_file *file, char *msg);
+void		pi_success_exit(t_pipeinfo *info, t_file *file);
 
 void		pi_freedstr_idx(char **dstr, int idx);
 void		pi_freedstr(char **dstr);
@@ -51,4 +52,7 @@ char		*pi_env_find(char **env);
 char		**pi_env_split(char *path);
 char		*pi_env_access(char **envs, char *command);
 
+int			pi_child(t_pipeinfo *info, t_file *file, int *fd);
+
+int			pi_execute(t_pipeinfo *info, char *command);
 #endif

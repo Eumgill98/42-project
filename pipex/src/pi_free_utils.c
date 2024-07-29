@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/27 16:44:36 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:54:14 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	pi_freeinfo(t_pipeinfo *info)
 	free(info);
 }
 
-void	pi_freedstr(char **dstr, int idx)
+void	pi_freedstr_idx(char **dstr, int idx)
 {
 	int	i;
 
@@ -35,7 +35,7 @@ void	pi_freedstr(char **dstr, int idx)
 	free(dstr);
 }
 
-void	pi_freedstr(char *dstr)
+void	pi_freedstr(char **dstr)
 {
 	int	i;
 
@@ -51,9 +51,11 @@ void	pi_freedstr(char *dstr)
 
 void	pi_freefile(t_file *file)
 {
+	if (!file)
+		return ;
 	if (file->input_file && file->input_file > 0)
 		close(file->input_file);
-	if (file->output_file)
-		close(file->close_file && file->input_file > 0);
+	if (file->output_file && file->output_file > 0)
+		close(file->output_file);
 	free(file);
 }
