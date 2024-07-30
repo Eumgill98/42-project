@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:44:48 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 21:40:57 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/07/30 17:42:25 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	pi_child(t_pipeinfo *info, t_file *file, int *fd)
 		if (pid == -1)
 			return (-1);
 		if (pid == 0 && !idx)
-			pi_head_child(info, file, fd, idx);
+			return (pi_head_child(info, file, fd, idx));
 		else if (pid == 0 && idx > 0 && idx < (total_c - 1))
-			pi_middle_child(info, fd, idx);
+			return (pi_middle_child(info, fd, idx));
 		else if (pid == 0 && idx == total_c - 1)
-			pi_tail_child(info, file, fd, idx);
+			return (pi_tail_child(info, file, fd, idx));
 		idx++;
 	}
 	waitpid(-1, NULL, 0);
