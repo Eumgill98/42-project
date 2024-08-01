@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 15:52:41 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 17:33:00 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:15:39 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void	pi_exit(t_pipeinfo *info, t_file *file, char *msg)
 	exit(pi_error(msg));
 }
 
-void	pi_success_exit(t_pipeinfo *info, t_file *file)
+void	pi_success_exit(t_pipeinfo *info, t_file *file, int *fd)
 {
 	pi_freeinfo(info);
 	pi_freefile(file);
+	pi_freepipe(fd);
 }
