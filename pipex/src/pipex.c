@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:18:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 18:33:11 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:24:59 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	main(int ac, char **av, char **env)
 			pi_exit(info, file, "info & file init fail!");
 		if (pipe(fd) == -1)
 			pi_exit(info, file, "pipe fail!");
-		pi_child(info, file, fd);
+		if (pi_child(info, file, fd) == -1)
+			pi_exit(info, file, "command not found");
 		pi_success_exit(info, file);
 	}
 	return (0);
