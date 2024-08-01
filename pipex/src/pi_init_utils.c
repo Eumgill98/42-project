@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 18:31:35 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/01 19:33:27 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ t_pipeinfo	*pi_init_info_allocate(void)
 	return (tmp);
 }
 
-t_file	*pi_init_file_allocate(void)
-{
-	t_file	*tmp;
-
-	tmp = (t_file *)malloc(sizeof(t_file));
-	if (!tmp)
-		return (NULL);
-	tmp->input_file = -1;
-	tmp->output_file = -1;
-	return (tmp);
-}
-
 t_pipeinfo	*pi_init_info(int ac, char **av, char **env)
 {
 	char		**commands;
@@ -71,25 +59,4 @@ t_pipeinfo	*pi_init_info(int ac, char **av, char **env)
 	}
 	t_info->num_commands = pi_dstrlen(commands);
 	return (t_info);
-}
-
-t_file	*pi_init_file(int ac, char **av)
-{
-	t_file	*file;
-	int		infile;
-	int		outfile;
-
-	file = pi_init_file_allocate();
-	if (!file)
-		return (NULL);
-	infile = open(av[1], O_RDONLY);
-	outfile = open(av[ac - 1], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	file->input_file = infile;
-	file->output_file = outfile;
-	if (infile == -1 || outfile == -1)
-	{
-		pi_freefile(file);
-		return (NULL);
-	}
-	return (file);
 }
