@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/07/29 17:54:14 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/01 17:18:15 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,12 @@ void	pi_freefile(t_file *file)
 	if (file->output_file && file->output_file > 0)
 		close(file->output_file);
 	free(file);
+}
+
+void	pi_freepipe(int *fd)
+{
+	if (fd[0] > 2)
+		close(fd[0]);
+	if (fd[1] > 2)
+		close(fd[0]);
 }
