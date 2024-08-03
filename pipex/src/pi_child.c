@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:44:48 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/08/01 19:41:12 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/03 14:10:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,36 @@ static int	pi_head_child(t_pipeinfo *info, int *fd, int idx, char *file)
 		close(fd[1]);
 		pi_exit(info, file);
 	}
-	dup2(fd[1], STDOUT_FILENO);
-	dup2(infile, STDIN_FILENO);
+	if (dup2(fd[1], STDOUT_FILENO) == -1)
+	{
+		close(fd[0]);
+		close(fd[1]);
+		close(infile);
+		pi_exit(info, "dup2");
+	}
+	if (dup2(infile, STDIN_FILENO) == -1)
+	{
+		close(fd[0]);
+		close(infile);
+		pi_exit(info, "dup2");
+	}
 	close(fd[0]);
 	return (pi_execute(info, info->commands[idx]));
 }
 
 static int	pi_middle_child(t_pipeinfo *info, int *fd, int idx)
 {
-	dup2(fd[1], STDOUT_FILENO);
-	dup2(fd[0], STDIN_FILENO);
+	if (dup2(fd[1], STDOUT_FILENO) == -1)
+	{
+		close(fd[0]);
+		close(fd[1]);
+		pi_exit(info, "dup2");
+	}
+	if (dup2(fd[0], STDIN_FILENO) == -1)
+	{
+		close(fd[0]);
+		pi_exit(info, "dup2");
+	}
 	return (pi_execute(info, info->commands[idx]));
 }
 
@@ -47,8 +67,19 @@ static int	pi_tail_child(t_pipeinfo *info, int *fd, int idx, char *file)
 		close(fd[1]);
 		pi_exit(info, file);
 	}
-	dup2(fd[0], STDIN_FILENO);
-	dup2(outfile, STDOUT_FILENO);
+	if (dup2(fd[0], STDIN_FILENO) == -1)
+	{
+		close(fd[0]);
+		close(fd[1]);
+		close(outfile);
+		pi_exit(info, "dup2");
+	}
+	if (dup2(outfile, STDOUT_FILENO) == -1)
+	{
+		close(fd[1]);
+		close(outfile);
+		pi_exit(info, "dup2");
+	}
 	close(fd[1]);
 	return (pi_execute(info, info->commands[idx]));
 }

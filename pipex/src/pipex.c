@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:18:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/08/01 19:37:03 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/03 13:58:27 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	main(int ac, char **av, char **env)
 			pi_exit(info, "command not found");
 		pi_success_exit(info, fd);
 	}
+	else
+		write(2, "wrong args\n", 11);
 	return (0);
 }
