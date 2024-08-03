@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 15:44:48 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/08/03 14:10:37 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:04:45 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,41 +18,23 @@ static int	pi_head_child(t_pipeinfo *info, int *fd, int idx, char *file)
 
 	infile = open(file, O_RDONLY);
 	if (infile < 0)
-	{
-		close(fd[0]);
-		close(fd[1]);
 		pi_exit(info, file);
-	}
+	info->infile = infile;
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
-	{
-		close(fd[0]);
-		close(fd[1]);
-		close(infile);
 		pi_exit(info, "dup2");
-	}
 	if (dup2(infile, STDIN_FILENO) == -1)
-	{
-		close(fd[0]);
-		close(infile);
 		pi_exit(info, "dup2");
-	}
 	close(fd[0]);
+	fd[0] = -1;
 	return (pi_execute(info, info->commands[idx]));
 }
 
 static int	pi_middle_child(t_pipeinfo *info, int *fd, int idx)
 {
 	if (dup2(fd[1], STDOUT_FILENO) == -1)
-	{
-		close(fd[0]);
-		close(fd[1]);
 		pi_exit(info, "dup2");
-	}
 	if (dup2(fd[0], STDIN_FILENO) == -1)
-	{
-		close(fd[0]);
 		pi_exit(info, "dup2");
-	}
 	return (pi_execute(info, info->commands[idx]));
 }
 
@@ -62,25 +44,14 @@ static int	pi_tail_child(t_pipeinfo *info, int *fd, int idx, char *file)
 
 	outfile = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (outfile < 0)
-	{
-		close(fd[0]);
-		close(fd[1]);
 		pi_exit(info, file);
-	}
+	info->outfile = outfile;
 	if (dup2(fd[0], STDIN_FILENO) == -1)
-	{
-		close(fd[0]);
-		close(fd[1]);
-		close(outfile);
 		pi_exit(info, "dup2");
-	}
 	if (dup2(outfile, STDOUT_FILENO) == -1)
-	{
-		close(fd[1]);
-		close(outfile);
 		pi_exit(info, "dup2");
-	}
 	close(fd[1]);
+	fd[1] = -1;
 	return (pi_execute(info, info->commands[idx]));
 }
 

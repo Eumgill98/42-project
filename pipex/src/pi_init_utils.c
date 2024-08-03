@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/08/01 19:33:27 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:00:50 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ t_pipeinfo	*pi_init_info_allocate(void)
 	tmp->commands = NULL;
 	tmp->envs = NULL;
 	tmp->num_commands = 0;
+	tmp->o_fd = -1;
+	tmp->c_fd = -1;
+	tmp->infile = -1;
+	tmp->outfile = -1;
 	return (tmp);
 }
 
