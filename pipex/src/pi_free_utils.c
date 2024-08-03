@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:37:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/08/01 19:25:31 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:05:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	pi_freeinfo(t_pipeinfo *info)
 		pi_freedstr(info->commands);
 	if (info->envs)
 		pi_freedstr(info->envs);
+	if (info->o_fd > 2)
+		close(info->o_fd);
+	if (info->c_fd > 2)
+		close(info->c_fd);
+	if (info->infile > 2)
+		close(info->infile);
+	if (info->outfile > 2)
+		close(info->outfile);
 	free(info);
 }
 

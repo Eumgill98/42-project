@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 16:18:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/08/03 13:58:27 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/08/03 14:58:10 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int ac, char **av, char **env)
 			pi_exit(info, "info init fail!");
 		if (pipe(fd) == -1)
 			pi_exit(info, "pipe allocate fail!");
+		info->o_fd = fd[0];
+		info->c_fd = fd[1];
 		if (pi_child(info, fd, ac, av) == -1)
 			pi_exit(info, "command not found");
 		pi_success_exit(info, fd);
