@@ -16,8 +16,10 @@ static int	ph_atoi(char *str, int *overflow, int *invalid_input)
 {
 	long long	result;
 	char		*tmp;
+	int		len;
 
 	result = 0;
+	len = 0;
 	tmp = (char *)str;
 	while (*tmp == ' ')
 		tmp++;
@@ -31,8 +33,9 @@ static int	ph_atoi(char *str, int *overflow, int *invalid_input)
 		result *= 10;
 		result += (*tmp - '0');
 		tmp++;
+		len++;
 	}
-	if (result != (int)result)
+	if (result != (int)result || len > 10)
 		*overflow = 1;
 	return (result);
 }
