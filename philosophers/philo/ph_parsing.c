@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:28:09 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/12 16:12:23 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:21:14 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ static int	ph_check_inputs(int ac, char **av, t_program *info)
 	overflow = 0;
 	invalid_input = 0;
 	info->num_philos = ph_atoi(av[1], &overflow, &invalid_input);
-	info->time_to_die = ph_atoi(av[2], &overflow, &invalid_input);
-	info->time_to_eat = ph_atoi(av[3], &overflow, &invalid_input);
-	info->time_to_sleep = ph_atoi(av[4], &overflow, &invalid_input);
+	info->time_to_die = (long)ph_atoi(av[2], &overflow, &invalid_input);
+	info->time_to_eat = (long)ph_atoi(av[3], &overflow, &invalid_input);
+	info->time_to_sleep = (long)ph_atoi(av[4], &overflow, &invalid_input);
 	if (ac == 6)
 		info->end_point = ph_atoi(av[5], &overflow, &invalid_input);
 	else
-		info->end_point = 0;
+		info->end_point = -1;
 	if (overflow || invalid_input)
 		return (-1);
 	return (0);
