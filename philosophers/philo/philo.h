@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/12 16:10:35 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:38:43 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_philo
 	int				id;
 	int				dead;
 	int				eat_count;
+	long			last_eaten;
 	pthread_t		*thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
@@ -30,15 +31,17 @@ typedef struct s_philo
 
 typedef struct s_program
 {
-	int				num_philos;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				end_point;
-	struct timeval	start_time;
-	t_philo			*philos;
+	int					num_philos;
+	long				time_to_die;
+	long				time_to_eat;
+	long				time_to_sleep;
+	int					end_point;
+	struct timeval		start_time;
+	t_philo				*philos;
 }	t_program;
 
-int	ph_parsing(int ac, char **av, t_program *info);
+int		ph_parsing(int ac, char **av, t_program *info);
+long	ph_now_ms(t_program *info);
+void	ph_init_info(t_program *info);
 
 #endif
