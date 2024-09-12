@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:28:09 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/04 18:01:09 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:12:23 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ph_atoi(char *str, int *overflow, int *invalid_input)
 {
 	long long	result;
 	char		*tmp;
-	int		len;
+	int			len;
 
 	result = 0;
 	len = 0;

@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/04 18:19:58 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:10:35 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ typedef struct s_philo
 
 typedef struct s_program
 {
-	int		num_philos;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		end_point;
+	int				num_philos;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				end_point;
 	struct timeval	start_time;
-	t_philo	*philos;
+	t_philo			*philos;
 }	t_program;
 
 int	ph_parsing(int ac, char **av, t_program *info);
