@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/13 15:33:48 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:18:36 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ph_init_forks(t_program *info)
 		tmp = ph_init_fork();
 		if (tmp == NULL)
 		{
-			ph_free_forks_idx(info->forks, idx);
+			ph_free_forks(info->forks, idx);
 			return (-1);
 		}
 		info->forks[idx] = tmp;
@@ -90,7 +90,7 @@ int	ph_init_philos(t_program *info)
 		tmp = ph_init_philo(info, idx);
 		if (tmp == NULL)
 		{
-			ph_free_philos_idx(info->philos, idx);
+			ph_free_philos(info->philos, idx);
 			return (-1);
 		}
 		info->philos[idx] = tmp;

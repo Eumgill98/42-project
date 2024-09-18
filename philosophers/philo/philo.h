@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/13 15:37:08 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/18 15:17:54 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ int				ph_init_philos(t_program *info);
 pthread_mutex_t	*ph_init_fork(void);
 int				ph_init_forks(t_program *info);
 
-void			ph_free_philos_idx(t_philo **philos, int target);
-void			ph_free_philos(t_philo **philos);
-void			ph_free_forks_idx(pthread_mutex_t **forks, int target);
-void			ph_free_forks(pthread_mutex_t **forks);
+void			ph_free_philos(t_philo **philos, int target);
+void			ph_free_forks(pthread_mutex_t **forks, int target);
 #endif
