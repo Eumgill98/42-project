@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/18 15:17:54 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:26:11 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_philo
 	pthread_t		*thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*print_mutex;
 }	t_philo;
 
 typedef struct s_program

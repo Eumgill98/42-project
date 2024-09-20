@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/18 15:18:36 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:27:28 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_philo	*ph_init_philo(t_program *info, int idx)
 	new->thread = NULL;
 	new->left_fork = NULL;
 	new->right_fork = NULL;
+	new->print_mutex = NULL;
 	return (new);
 }
 
