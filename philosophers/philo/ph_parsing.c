@@ -6,13 +6,13 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:28:09 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/20 18:38:02 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:20:34 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	isspace(char c)
+static int	ph_isspace(char c)
 {
 	if (c == ' ' || c == '0')
 		return (1);
@@ -28,7 +28,7 @@ static int	ph_atoi(char *str, int *overflow, int *invalid_input)
 	result = 0;
 	len = 0;
 	tmp = (char *)str;
-	while (isspace(*tmp))
+	while (ph_isspace(*tmp))
 		tmp++;
 	while (*tmp)
 	{

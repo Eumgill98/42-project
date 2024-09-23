@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/20 18:26:11 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:25:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,24 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+typedef struct s_program	t_program;
+typedef struct s_philo		t_philo;
+
 typedef struct s_philo
 {
 	int				id;
-	int				dead;
 	int				eat_count;
 	long			last_eaten;
 	pthread_t		*thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*print_mutex;
+	t_program		*info;
 }	t_philo;
 
 typedef struct s_program
 {
 	int					num_philos;
+	int					end_flag;
 	long				time_to_die;
 	long				time_to_eat;
 	long				time_to_sleep;
@@ -40,18 +43,22 @@ typedef struct s_program
 	struct timeval		start_time;
 	t_philo				**philos;
 	pthread_mutex_t		**forks;
+	pthread_mutex_t		*print_mutex;
+	pthread_mutex_t		*dead_mutex;
 }	t_program;
 
 int				ph_parsing(int ac, char **av, t_program *info);
 
 long			ph_now_ms(t_program *info);
 
-void			ph_init_info(t_program *info);
+pthread_mutex_t	*ph_init_mutex(void);
+
+int				ph_init_info(t_program *info);
 t_philo			*ph_init_philo(t_program *info, int idx);
 int				ph_init_philos(t_program *info);
-pthread_mutex_t	*ph_init_fork(void);
 int				ph_init_forks(t_program *info);
 
 void			ph_free_philos(t_philo **philos, int target);
 void			ph_free_forks(pthread_mutex_t **forks, int target);
+void			ph_free_info(t_program *info);
 #endif

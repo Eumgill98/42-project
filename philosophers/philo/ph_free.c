@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:09:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/18 17:24:00 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:27:23 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ph_free_forks(pthread_mutex_t **forks, int target)
 		while (forks[idx])
 		{
 			pthread_mutex_destroy(forks[idx]);
+			free(forks[idx]);
+			forks[idx] = NULL;
 			idx++;
 		}
 	}
@@ -54,8 +56,36 @@ void	ph_free_forks(pthread_mutex_t **forks, int target)
 		while (idx < target)
 		{
 			pthread_mutex_destroy(forks[idx]);
+			free(forks[idx]);
+			forks[idx] = NULL;
 			idx++;
 		}
 	}
 	free(forks);
+}
+
+void	ph_free_info(t_program *info)
+{
+	if (info->philos)
+	{
+		ph_free_philos(info->philos, -1);
+		info->philos = NULL;
+	}	
+	if (info->forks)
+	{
+		ph_free_forks(info->forks, -1);
+		info->forks = NULL;
+	}
+	if (info->print_mutex)
+	{
+		pthread_mutex_destroy(info->print_mutex);
+		free(info->print_mutex);
+		info->print_mutex = NULL;
+	}
+	if (info->dead_mutex)
+	{
+		pthread_mutex_destroy(info->dead_mutex);
+		free(info->dead_mutex);
+		info->dead_mutex = NULL;
+	}
 }

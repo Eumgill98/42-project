@@ -6,15 +6,16 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/20 18:27:28 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:26:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ph_init_info(t_program *info)
+int	ph_init_info(t_program *info)
 {
 	info->num_philos = 0;
+	info->end_flag = 0;
 	info->time_to_die = 0;
 	info->time_to_eat = 0;
 	info->time_to_sleep = 0;
@@ -22,6 +23,11 @@ void	ph_init_info(t_program *info)
 	gettimeofday(&(info->start_time), NULL);
 	info->philos = NULL;
 	info->forks = NULL;
+	info->print_mutex = ph_init_mutex();
+	info->dead_mutex = ph_init_mutex();
+	if (info->print_mutex == NULL || info->dead_mutex == NULL)
+		return (-1);
+	return (0);
 }
 
 t_philo	*ph_init_philo(t_program *info, int idx)
@@ -32,23 +38,13 @@ t_philo	*ph_init_philo(t_program *info, int idx)
 	if (new == NULL)
 		return (NULL);
 	new->id = idx;
-	new->dead = 0;
 	new->eat_count = 0;
 	new->last_eaten = 0;
 	new->thread = NULL;
 	new->left_fork = NULL;
 	new->right_fork = NULL;
-	new->print_mutex = NULL;
+	new->info = info;
 	return (new);
-}
-
-pthread_mutex_t	*ph_init_fork(void)
-{
-	pthread_mutex_t	*new;
-
-	if (pthread_mutex_init(new, NULL) == 0)
-		return (new);
-	return (NULL);
 }
 
 int	ph_init_forks(t_program *info)
@@ -63,10 +59,11 @@ int	ph_init_forks(t_program *info)
 	idx = 0;
 	while (idx < info->num_philos)
 	{
-		tmp = ph_init_fork();
+		tmp = ph_init_mutex();
 		if (tmp == NULL)
 		{
 			ph_free_forks(info->forks, idx);
+			info->forks = NULL;
 			return (-1);
 		}
 		info->forks[idx] = tmp;
@@ -92,6 +89,7 @@ int	ph_init_philos(t_program *info)
 		if (tmp == NULL)
 		{
 			ph_free_philos(info->philos, idx);
+			info->philos = NULL;
 			return (-1);
 		}
 		info->philos[idx] = tmp;
