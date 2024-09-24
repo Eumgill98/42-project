@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/24 17:12:01 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:07:28 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ph_init_info(t_program *info)
 	gettimeofday(&(info->start_time), NULL);
 	info->philos = NULL;
 	info->forks = NULL;
+	info->pthreads = NULL;
 	info->print_mutex = ph_init_mutex();
 	info->dead_mutex = ph_init_mutex();
 	if (info->print_mutex == NULL || info->dead_mutex == NULL)
