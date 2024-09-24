@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/23 17:26:37 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:12:01 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,26 @@ int	ph_init_info(t_program *info)
 t_philo	*ph_init_philo(t_program *info, int idx)
 {
 	t_philo	*new;
+	int		left_fork;
+	int		right_fork;
 
+	if (idx == 0)
+		right_fork = (info->num_philos) - 1;
+	else
+		right_fork = idx - 1;
+	if (idx == (info->num_philos - 1))
+		left_fork = 0;
+	else
+		right_fork = idx + 1;
 	new = (t_philo *)malloc(sizeof(t_philo));
 	if (new == NULL)
 		return (NULL);
 	new->id = idx;
 	new->eat_count = 0;
 	new->last_eaten = 0;
-	new->thread = NULL;
-	new->left_fork = NULL;
-	new->right_fork = NULL;
+	new->thread = info->pthreads[idx];
+	new->left_fork = (info->forks)[left_fork];
+	new->right_fork = (info->forks)[right_fork];
 	new->info = info;
 	return (new);
 }
@@ -70,6 +80,32 @@ int	ph_init_forks(t_program *info)
 		idx++;
 	}
 	info->forks[idx] = NULL;
+	return (0);
+}
+
+int	ph_init_pthreads(t_program *info)
+{
+	int			idx;
+	pthread_t	*tmp;
+
+	info->pthreads = (pthread_t **)malloc(sizeof(pthread_t *) \
+						* (info->num_philos + 1));
+	if (info->pthreads == NULL)
+		return (-1);
+	idx = 0;
+	while (idx < info->num_philos)
+	{
+		tmp = (pthread_t *)malloc(sizeof(pthread_t));
+		if (!tmp)
+		{
+			ph_free_pthreads(info->pthreads, idx);
+			info->pthreads = NULL;
+			return (-1);
+		}
+		info->pthreads[idx] = tmp;
+		idx++;
+	}
+	info->pthreads[idx] = NULL;
 	return (0);
 }
 

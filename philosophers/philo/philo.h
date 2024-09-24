@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/23 17:25:03 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:10:41 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_program
 	int					end_point;
 	struct timeval		start_time;
 	t_philo				**philos;
+	pthread_t			**pthreads;
 	pthread_mutex_t		**forks;
 	pthread_mutex_t		*print_mutex;
 	pthread_mutex_t		*dead_mutex;
@@ -57,8 +58,10 @@ int				ph_init_info(t_program *info);
 t_philo			*ph_init_philo(t_program *info, int idx);
 int				ph_init_philos(t_program *info);
 int				ph_init_forks(t_program *info);
+int				ph_init_pthreads(t_program *info);
 
 void			ph_free_philos(t_philo **philos, int target);
 void			ph_free_forks(pthread_mutex_t **forks, int target);
+void			ph_free_pthreads(pthread_t **pthreads, int target);
 void			ph_free_info(t_program *info);
 #endif
