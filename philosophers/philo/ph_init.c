@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/25 21:12:30 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:34:07 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ph_init_info(t_program *info)
 {
 	info->num_philos = 0;
 	info->end_flag = 0;
+	info->all_thread_end = 0;
 	info->time_to_die = 0;
 	info->time_to_eat = 0;
 	info->time_to_sleep = 0;
@@ -26,7 +27,10 @@ int	ph_init_info(t_program *info)
 	info->pthreads = NULL;
 	info->print_mutex = ph_init_mutex();
 	info->dead_mutex = ph_init_mutex();
-	if (info->print_mutex == NULL || info->dead_mutex == NULL)
+	info->end_mutex = ph_init_mutex();
+	if (info->print_mutex == NULL || \
+			info->dead_mutex == NULL || \
+				info->end_mutex == NULL)
 		return (-1);
 	return (0);
 }
@@ -50,6 +54,7 @@ t_philo	*ph_init_philo(t_program *info, int idx)
 		return (NULL);
 	new->id = idx + 1;
 	new->eat_count = 0;
+	new->thread_end = 0;
 	new->last_eaten = 0;
 	new->thread = info->pthreads[idx];
 	new->left_fork = (info->forks)[left_fork];
