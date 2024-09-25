@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 15:09:40 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/24 17:10:56 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:31:50 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,10 @@ void	ph_free_info(t_program *info)
 	{
 		pthread_mutex_destroy(info->dead_mutex);
 		free(info->dead_mutex);
+	}
+	if (info->end_mutex)
+	{
+		pthread_mutex_destroy(info->end_mutex);
+		free(info->end_mutex);
 	}
 }
