@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ph_philo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/23 16:15:16 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/25 21:14:47 by hocjeong         ###   ########.fr       */
+/*   Created: 2024/09/25 14:35:46 by hocjeong          #+#    #+#             */
+/*   Updated: 2024/09/25 21:03:47 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	main(int ac, char **av)
+static int	ph_make_philo(t_philo *philo)
 {
-	t_program	info;
+	int	pthread_id;
 
-	if (ph_init_info(&info) == -1 || ph_parsing(ac, av, &info) == -1)
-	{
-		ph_free_info(&info);
+	pthread_id = pthread_create(philo->thread, NULL, ph_routine, (void *)philo);
+	if (pthread_id < 0)
 		return (-1);
-	}
-	if (ph_init_forks(&info) == -1 || ph_init_pthreads(&info) == -1 \
-			|| ph_init_philos(&info) == -1)
+	return (0);
+}
+
+void	ph_philo(t_program *info)
+{
+	int	idx;
+
+	idx = 0;
+	info->start_time = ph_get_ms();
+	while (idx < info->num_philos)
 	{
-		ph_free_info(&info);
-		return (-1);
+		if (ph_make_philo(info->philos[idx]) == -1)
+			return ;
+		pthread_detach(*(info->philos[idx]->thread));
+		idx++;
 	}
-	ph_philo(&info);
-	ph_monitoring(&info);
-	ph_free_info(&info);
 }

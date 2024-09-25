@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/24 17:10:41 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/25 20:21:02 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 typedef struct s_program	t_program;
 typedef struct s_philo		t_philo;
@@ -40,7 +41,7 @@ typedef struct s_program
 	long				time_to_eat;
 	long				time_to_sleep;
 	int					end_point;
-	struct timeval		start_time;
+	long				start_time;
 	t_philo				**philos;
 	pthread_t			**pthreads;
 	pthread_mutex_t		**forks;
@@ -51,8 +52,10 @@ typedef struct s_program
 int				ph_parsing(int ac, char **av, t_program *info);
 
 long			ph_now_ms(t_program *info);
+long			ph_get_ms(void);
 
 pthread_mutex_t	*ph_init_mutex(void);
+void			ph_fork_mutex(t_philo *philo);
 
 int				ph_init_info(t_program *info);
 t_philo			*ph_init_philo(t_program *info, int idx);
@@ -64,4 +67,12 @@ void			ph_free_philos(t_philo **philos, int target);
 void			ph_free_forks(pthread_mutex_t **forks, int target);
 void			ph_free_pthreads(pthread_t **pthreads, int target);
 void			ph_free_info(t_program *info);
+
+void			*ph_routine(void *args);
+
+void			ph_philo(t_program *info);
+
+void			ph_new_sleep(long ms);
+
+void			ph_monitoring(t_program *info);
 #endif
