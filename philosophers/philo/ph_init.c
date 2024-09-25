@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/24 19:07:28 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:12:30 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ph_init_info(t_program *info)
 	info->time_to_eat = 0;
 	info->time_to_sleep = 0;
 	info->end_point = -1;
-	gettimeofday(&(info->start_time), NULL);
+	info->start_time = 0;
 	info->philos = NULL;
 	info->forks = NULL;
 	info->pthreads = NULL;
@@ -44,11 +44,11 @@ t_philo	*ph_init_philo(t_program *info, int idx)
 	if (idx == (info->num_philos - 1))
 		left_fork = 0;
 	else
-		right_fork = idx + 1;
+		left_fork = idx + 1;
 	new = (t_philo *)malloc(sizeof(t_philo));
 	if (new == NULL)
 		return (NULL);
-	new->id = idx;
+	new->id = idx + 1;
 	new->eat_count = 0;
 	new->last_eaten = 0;
 	new->thread = info->pthreads[idx];
