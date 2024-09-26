@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:15:16 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/25 21:45:43 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/26 16:59:04 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ph_pthread_exit(t_program *info)
 			pthread_mutex_unlock(info->end_mutex);
 			idx++;
 		}
-		if (total_end_pthread == num_philos)
+		if (total_end_pthread == info->num_philos)
 			break ;
 	}
 }
@@ -37,13 +37,9 @@ int	main(int ac, char **av)
 {
 	t_program	info;
 
-	if (ph_init_info(&info) == -1 || ph_parsing(ac, av, &info) == -1)
-	{
-		ph_free_info(&info);
-		return (-1);
-	}
-	if (ph_init_forks(&info) == -1 || ph_init_pthreads(&info) == -1 \
-			|| ph_init_philos(&info) == -1)
+	ph_init_info(&info);
+	if (ph_parsing(ac, av, &info) == -1 || ph_init_info_mutexs(&info) == -1 || \
+			ph_init_pthreads(&info) == -1 || ph_init_philos(&info) == -1)
 	{
 		ph_free_info(&info);
 		return (-1);
