@@ -62,8 +62,10 @@ void	*ph_routine(void *args)
 	philo = (t_philo *)args;
 	while (1)
 	{
+		pthread_mutex_lock(philo->info->dead_mutex);
 		if (philo->info->end_flag)
 			break ;
+		pthread_mutex_unlock(philo->info->dead_mutex);
 		ph_eat(philo);
 		ph_sleep(philo);
 		ph_think(philo);
