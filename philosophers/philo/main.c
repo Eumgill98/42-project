@@ -12,6 +12,27 @@
 
 #include "philo.h"
 
+void	ph_pthread_exit(t_program *info)
+{
+	int	total_end_pthread;
+	int	idx;
+
+	while (1)
+	{
+		total_end_pthread = 0;
+		idx = 0;
+		while (idx < info->num_philos)
+		{
+			pthread_mutex_lock(info->end_mutex);
+			total_end_pthread += info->philos[idx]->thread_end;
+			pthread_mutex_unlock(info->end_mutex);
+			idx++;
+		}
+		if (total_end_pthread == num_philos)
+			break ;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_program	info;
@@ -29,6 +50,6 @@ int	main(int ac, char **av)
 	}
 	ph_philo(&info);
 	ph_monitoring(&info);
-	//ph_pthread_exit(&info);
+	ph_pthread_exit(&info);
 	ph_free_info(&info);
 }
