@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/25 21:45:12 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:29:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_philo
 	pthread_t		*thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	*last_eaten_mutex;
+	pthread_mutex_t	*eat_count_mutex;
 	t_program		*info;
 }	t_philo;
 
@@ -47,6 +49,8 @@ typedef struct s_program
 	t_philo				**philos;
 	pthread_t			**pthreads;
 	pthread_mutex_t		**forks;
+	pthread_mutex_t		**last_eaten_mutexs;
+	pthread_mutex_t		**eat_count_mutexs;
 	pthread_mutex_t		*print_mutex;
 	pthread_mutex_t		*dead_mutex;
 	pthread_mutex_t		*end_mutex;
@@ -57,17 +61,19 @@ int				ph_parsing(int ac, char **av, t_program *info);
 long			ph_now_ms(t_program *info);
 long			ph_get_ms(void);
 
-pthread_mutex_t	*ph_init_mutex(void);
+pthread_mutex_t	*ph_malloc_mutex(void);
+pthread_mutex_t	**ph_malloc_dmutex(int len);
+pthread_mutex_t	*ph_allocate_fork(t_program *info, int idx, char c);
 void			ph_fork_mutex(t_philo *philo);
 
-int				ph_init_info(t_program *info);
+void			ph_init_info(t_program *info);
 t_philo			*ph_init_philo(t_program *info, int idx);
+int				ph_init_info_mutexs(t_program *info);
 int				ph_init_philos(t_program *info);
-int				ph_init_forks(t_program *info);
 int				ph_init_pthreads(t_program *info);
 
 void			ph_free_philos(t_philo **philos, int target);
-void			ph_free_forks(pthread_mutex_t **forks, int target);
+void			ph_free_mutexs(pthread_mutex_t **forks, int target);
 void			ph_free_pthreads(pthread_t **pthreads, int target);
 void			ph_free_info(t_program *info);
 
