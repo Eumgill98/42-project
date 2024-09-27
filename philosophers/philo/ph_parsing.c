@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:28:09 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/23 16:20:34 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:30:41 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ph_isspace(char c)
 	return (0);
 }
 
-static int	ph_atoi(char *str, int *overflow, int *invalid_input)
+static int	ph_atoi(char *str, int *invalid_input)
 {
 	long long	result;
 	char		*tmp;
@@ -42,27 +42,25 @@ static int	ph_atoi(char *str, int *overflow, int *invalid_input)
 		tmp++;
 		len++;
 	}
-	if (result != (int)result || len > 10)
-		*overflow = 1;
+	if (result != (int)result || len > 10 || result == 0)
+		*invalid_input = 1;
 	return (result);
 }
 
 static int	ph_check_inputs(int ac, char **av, t_program *info)
 {
-	int	overflow;
 	int	invalid_input;
 
-	overflow = 0;
 	invalid_input = 0;
-	info->num_philos = ph_atoi(av[1], &overflow, &invalid_input);
-	info->time_to_die = (long)ph_atoi(av[2], &overflow, &invalid_input);
-	info->time_to_eat = (long)ph_atoi(av[3], &overflow, &invalid_input);
-	info->time_to_sleep = (long)ph_atoi(av[4], &overflow, &invalid_input);
+	info->num_philos = ph_atoi(av[1], &invalid_input);
+	info->time_to_die = (long)ph_atoi(av[2], &invalid_input);
+	info->time_to_eat = (long)ph_atoi(av[3], &invalid_input);
+	info->time_to_sleep = (long)ph_atoi(av[4], &invalid_input);
 	if (ac == 6)
-		info->end_point = ph_atoi(av[5], &overflow, &invalid_input);
+		info->end_point = ph_atoi(av[5], &invalid_input);
 	else
 		info->end_point = -1;
-	if (overflow || invalid_input)
+	if (invalid_input)
 		return (-1);
 	return (0);
 }
