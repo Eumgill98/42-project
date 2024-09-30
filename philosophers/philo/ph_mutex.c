@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:20:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/26 16:55:30 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/30 20:28:14 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,7 @@ pthread_mutex_t	**ph_malloc_dmutex(int len)
 pthread_mutex_t	*ph_allocate_fork(t_program *info, int idx, char c)
 {
 	if (c == 'r')
-	{
-		if (idx == 0)
-			return (info->forks[(info->num_philos) - 1]);
-		else
-			return (info->forks[idx - 1]);
-	}
+		return (info->forks[idx]);
 	else
 	{
 		if (idx == (info->num_philos - 1))
@@ -73,6 +68,9 @@ void	ph_fork_mutex(t_philo *philo)
 	if (!(philo->id % 2))
 	{
 		pthread_mutex_lock(philo->left_fork);
+		pthread_mutex_lock(philo->info->print_mutex);
+		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
+		pthread_mutex_unlock(philo->info->print_mutex);
 		pthread_mutex_lock(philo->right_fork);
 		pthread_mutex_lock(philo->info->print_mutex);
 		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
@@ -81,6 +79,9 @@ void	ph_fork_mutex(t_philo *philo)
 	else
 	{
 		pthread_mutex_lock(philo->right_fork);
+		pthread_mutex_lock(philo->info->print_mutex);
+		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
+		pthread_mutex_unlock(philo->info->print_mutex);
 		pthread_mutex_lock(philo->left_fork);
 		pthread_mutex_lock(philo->info->print_mutex);
 		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);

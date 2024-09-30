@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/26 18:11:44 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/30 20:41:17 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static int	check_dead(t_program *info)
 			info->end_flag = 1;
 			printf("%lu %d is died\n", ph_now_ms(info), idx + 1);
 			pthread_mutex_unlock(info->print_mutex);
-			pthread_mutex_unlock(info->dead_mutex);
 			pthread_mutex_unlock(philo->last_eaten_mutex);
+			pthread_mutex_unlock(info->dead_mutex);
 			return (1);
 		}
 		pthread_mutex_unlock(philo->last_eaten_mutex);
@@ -77,6 +77,30 @@ void	ph_monitoring(t_program *info)
 		all_eat_flag = check_all_eaten(info);
 		dead_flag = check_dead(info);
 		if (all_eat_flag || dead_flag)
+			break ;
+	}
+}
+
+void	ph_pthread_dead(t_program *info)
+{
+	int		idx;
+	int		dead_pthread;
+	t_philo	*philo;
+
+	while (1)
+	{
+		idx = 0;
+		dead_pthread = 0;
+		while (idx < info->num_philos)
+		{
+			philo = info->philos[idx];
+			pthread_mutex_lock(philo->thread_end_mutex);
+			if (philo->thread_end)
+				dead_pthread++;
+			pthread_mutex_unlock(philo->thread_end_mutex);
+			idx++;
+		}
+		if (dead_pthread == info->num_philos)
 			break ;
 	}
 }
