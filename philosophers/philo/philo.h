@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/26 17:29:37 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:21:33 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_philo
 	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	*last_eaten_mutex;
 	pthread_mutex_t	*eat_count_mutex;
+	pthread_mutex_t	*thread_end_mutex;
 	t_program		*info;
 }	t_philo;
 
@@ -53,7 +54,7 @@ typedef struct s_program
 	pthread_mutex_t		**eat_count_mutexs;
 	pthread_mutex_t		*print_mutex;
 	pthread_mutex_t		*dead_mutex;
-	pthread_mutex_t		*end_mutex;
+	pthread_mutex_t		**thread_end_mutexs;
 }	t_program;
 
 int				ph_parsing(int ac, char **av, t_program *info);
@@ -84,4 +85,5 @@ void			ph_philo(t_program *info);
 void			ph_new_sleep(long ms);
 
 void			ph_monitoring(t_program *info);
+void			ph_pthread_dead(t_program *info);
 #endif

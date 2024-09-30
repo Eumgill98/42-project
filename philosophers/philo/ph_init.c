@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/26 16:55:58 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/30 18:23:16 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ph_init_info(t_program *info)
 	info->pthreads = NULL;
 	info->print_mutex = NULL;
 	info->dead_mutex = NULL;
-	info->end_mutex = NULL;
+	info->thread_end_mutexs = NULL;
 }
 
 t_philo	*ph_init_philo(t_program *info, int idx)
@@ -48,6 +48,7 @@ t_philo	*ph_init_philo(t_program *info, int idx)
 	new->eat_count_mutex = info->eat_count_mutexs[idx];
 	new->left_fork = ph_allocate_fork(info, idx, 'l');
 	new->right_fork = ph_allocate_fork(info, idx, 'r');
+	new->thread_end_mutex = info->thread_end_mutexs[idx];
 	new->info = info;
 	return (new);
 }
@@ -85,10 +86,10 @@ int	ph_init_info_mutexs(t_program *info)
 	info->eat_count_mutexs = ph_malloc_dmutex(info->num_philos);
 	info->print_mutex = ph_malloc_mutex();
 	info->dead_mutex = ph_malloc_mutex();
-	info->end_mutex = ph_malloc_mutex();
+	info->thread_end_mutexs = ph_malloc_dmutex(info->num_philos);
 	if (!(info->forks) || !(info->last_eaten_mutexs) || \
 		!(info->eat_count_mutexs) || !(info->print_mutex) || \
-		!(info->dead_mutex) || !(info->end_mutex))
+		!(info->dead_mutex) || !(info->thread_end_mutexs))
 		return (-1);
 	return (0);
 }

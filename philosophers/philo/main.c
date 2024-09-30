@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:15:16 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/26 18:06:08 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/09/30 20:27:18 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int ac, char **av)
 	}
 	ph_philo(&info);
 	ph_monitoring(&info);
+	ph_pthread_dead(&info);
 	ph_free_info(&info);
 }
