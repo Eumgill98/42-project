@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/30 18:21:33 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:45:03 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ pthread_mutex_t	*ph_malloc_mutex(void);
 pthread_mutex_t	**ph_malloc_dmutex(int len);
 pthread_mutex_t	*ph_allocate_fork(t_program *info, int idx, char c);
 void			ph_fork_mutex(t_philo *philo);
+void			ph_fork_mutex_one(t_philo *philo);
 
 void			ph_init_info(t_program *info);
 t_philo			*ph_init_philo(t_program *info, int idx);
