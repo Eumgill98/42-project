@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:45:59 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/30 20:47:18 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/02 16:56:21 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	ph_eat(t_philo *philo)
 {
-	ph_fork_mutex(philo);
+	if (philo->info->num_philos == 1)
+		ph_fork_mutex_one(philo);
+	else
+		ph_fork_mutex(philo);
 	pthread_mutex_lock(philo->last_eaten_mutex);
 	philo->last_eaten = ph_now_ms(philo->info);
 	pthread_mutex_unlock(philo->last_eaten_mutex);
@@ -26,10 +29,10 @@ static void	ph_eat(t_philo *philo)
 		pthread_mutex_unlock(philo->info->print_mutex);
 	}
 	pthread_mutex_unlock(philo->info->dead_mutex);
-	ph_new_sleep(philo->info->time_to_sleep);
 	pthread_mutex_lock(philo->eat_count_mutex);
 	philo->eat_count += 1;
 	pthread_mutex_unlock(philo->eat_count_mutex);
+	ph_new_sleep(philo->info->time_to_sleep);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }

@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/02 15:54:37 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/02 17:22:51 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	check_all_eaten(t_program *info)
 		pthread_mutex_unlock(philo->eat_count_mutex);
 		idx++;
 	}
-	if (enough_eat == info->end_point)
+	if (enough_eat == info->num_philos)
 	{
 		pthread_mutex_lock(info->dead_mutex);
 		info->end_flag = 1;
