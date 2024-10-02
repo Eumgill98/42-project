@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/30 20:41:17 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/02 15:54:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_all_eaten(t_program *info)
 	{
 		philo = info->philos[idx];
 		pthread_mutex_lock(philo->eat_count_mutex);
-		if (philo->eat_count == info->end_point)
+		if (philo->eat_count >= info->end_point)
 			enough_eat += 1;
 		pthread_mutex_unlock(philo->eat_count_mutex);
 		idx++;
@@ -74,10 +74,19 @@ void	ph_monitoring(t_program *info)
 
 	while (1)
 	{
-		all_eat_flag = check_all_eaten(info);
-		dead_flag = check_dead(info);
-		if (all_eat_flag || dead_flag)
-			break ;
+		if (info->end_point != -1)
+		{
+			all_eat_flag = check_all_eaten(info);
+			dead_flag = check_dead(info);
+			if (all_eat_flag || dead_flag)
+				break ;
+		}
+		else
+		{
+			dead_flag = check_dead(info);
+			if (dead_flag)
+				break ;
+		}
 	}
 }
 
