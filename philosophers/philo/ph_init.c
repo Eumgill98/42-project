@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 17:36:01 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/30 18:23:16 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:13:59 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_philo	*ph_init_philo(t_program *info, int idx)
 		return (NULL);
 	new->id = idx + 1;
 	new->eat_count = 0;
-	new->thread_end = 0;
 	new->last_eaten = 0;
 	new->thread = info->pthreads[idx];
 	new->last_eaten_mutex = info->last_eaten_mutexs[idx];

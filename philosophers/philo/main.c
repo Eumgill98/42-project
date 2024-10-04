@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 16:15:16 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/02 17:30:25 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:18:25 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_program	info;
+	int			idx;
 
 	ph_init_info(&info);
 	if (ph_parsing(ac, av, &info) == -1 || ph_init_info_mutexs(&info) == -1 || \
@@ -25,6 +26,11 @@ int	main(int ac, char **av)
 	}
 	ph_philo(&info);
 	ph_monitoring(&info);
-	ph_pthread_dead(&info);
+	idx = 0;
+	while (idx < info.num_philos)
+	{
+		pthread_join(*(info.philos[idx]->thread), NULL);
+		idx++;
+	}
 	ph_free_info(&info);
 }

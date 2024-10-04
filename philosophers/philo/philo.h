@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/02 16:45:03 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:13:36 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_philo
 {
 	int				id;
 	int				eat_count;
-	int				thread_end;
 	long			last_eaten;
 	pthread_t		*thread;
 	pthread_mutex_t	*left_fork;

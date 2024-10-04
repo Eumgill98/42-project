@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/02 17:22:51 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:19:58 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,29 +87,6 @@ void	ph_monitoring(t_program *info)
 			if (dead_flag)
 				break ;
 		}
-	}
-}
-
-void	ph_pthread_dead(t_program *info)
-{
-	int		idx;
-	int		dead_pthread;
-	t_philo	*philo;
-
-	while (1)
-	{
-		idx = 0;
-		dead_pthread = 0;
-		while (idx < info->num_philos)
-		{
-			philo = info->philos[idx];
-			pthread_mutex_lock(philo->thread_end_mutex);
-			if (philo->thread_end)
-				dead_pthread++;
-			pthread_mutex_unlock(philo->thread_end_mutex);
-			idx++;
-		}
-		if (dead_pthread == info->num_philos)
-			break ;
+		usleep(100);
 	}
 }

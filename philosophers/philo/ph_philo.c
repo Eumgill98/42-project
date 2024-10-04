@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:35:46 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/09/30 18:07:21 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/04 20:16:22 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ph_philo(t_program *info)
 	{
 		if (ph_make_philo(info->philos[idx]) == -1)
 			return ;
-		pthread_detach(*(info->philos[idx]->thread));
 		idx++;
 	}
 }
