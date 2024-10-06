@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 15:52:28 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/04 20:13:36 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/06 16:05:43 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,6 @@ void			ph_new_sleep(long ms);
 
 void			ph_monitoring(t_program *info);
 void			ph_pthread_dead(t_program *info);
+
+void			ph_print(int id, char type, t_program *info);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:20:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/02 16:47:15 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/06 16:08:15 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,33 +68,23 @@ void	ph_fork_mutex(t_philo *philo)
 	if (!(philo->id % 2))
 	{
 		pthread_mutex_lock(philo->left_fork);
-		pthread_mutex_lock(philo->info->print_mutex);
-		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
-		pthread_mutex_unlock(philo->info->print_mutex);
+		ph_print(philo->id, 'f', philo->info);
 		pthread_mutex_lock(philo->right_fork);
-		pthread_mutex_lock(philo->info->print_mutex);
-		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
-		pthread_mutex_unlock(philo->info->print_mutex);
+		ph_print(philo->id, 'f', philo->info);
 	}
 	else
 	{
 		pthread_mutex_lock(philo->right_fork);
-		pthread_mutex_lock(philo->info->print_mutex);
-		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
-		pthread_mutex_unlock(philo->info->print_mutex);
+		ph_print(philo->id, 'f', philo->info);
 		pthread_mutex_lock(philo->left_fork);
-		pthread_mutex_lock(philo->info->print_mutex);
-		printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
-		pthread_mutex_unlock(philo->info->print_mutex);
+		ph_print(philo->id, 'f', philo->info);
 	}
 }
 
 void	ph_fork_mutex_one(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
-	pthread_mutex_lock(philo->info->print_mutex);
-	printf("%lu %d has taken a fork\n", ph_now_ms(philo->info), philo->id);
-	pthread_mutex_unlock(philo->info->print_mutex);
+	ph_print(philo->id, 'f', philo->info);
 	pthread_mutex_unlock(philo->left_fork);
 	ph_new_sleep(philo->info->time_to_die);
 }

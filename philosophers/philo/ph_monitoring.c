@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/04 20:19:58 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/06 16:02:46 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static int	check_dead(t_program *info)
 		if ((ph_now_ms(info) - philo->last_eaten) \
 				>= info->time_to_die)
 		{
-			pthread_mutex_lock(info->print_mutex);
 			pthread_mutex_lock(info->dead_mutex);
+			pthread_mutex_lock(info->print_mutex);
 			info->end_flag = 1;
 			printf("%lu %d is died\n", ph_now_ms(info), idx + 1);
 			pthread_mutex_unlock(info->print_mutex);
-			pthread_mutex_unlock(philo->last_eaten_mutex);
 			pthread_mutex_unlock(info->dead_mutex);
+			pthread_mutex_unlock(philo->last_eaten_mutex);
 			return (1);
 		}
 		pthread_mutex_unlock(philo->last_eaten_mutex);
