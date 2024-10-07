@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:45:59 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/07 13:29:48 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:01:37 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void	*ph_routine(void *args)
 	philo = (t_philo *)args;
 	while (1)
 	{
+		if (philo->id % 2 == 0)
+			usleep(100);
+		ph_eat(philo);
+		ph_sleep(philo);
+		ph_think(philo);
 		pthread_mutex_lock(philo->info->dead_mutex);
 		if (philo->info->end_flag)
 		{
@@ -55,9 +60,6 @@ void	*ph_routine(void *args)
 			break ;
 		}
 		pthread_mutex_unlock(philo->info->dead_mutex);
-		ph_eat(philo);
-		ph_sleep(philo);
-		ph_think(philo);
 	}
 	return (NULL);
 }
