@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:45:59 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/06 16:08:47 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/07 13:29:48 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ph_eat(t_philo *philo)
 	philo->last_eaten = ph_now_ms(philo->info);
 	pthread_mutex_unlock(philo->last_eaten_mutex);
 	ph_print(philo->id, 'e', philo->info);
-	ph_new_sleep(philo->info->time_to_sleep);
+	ph_new_sleep(philo->info->time_to_eat);
 	pthread_mutex_lock(philo->eat_count_mutex);
 	philo->eat_count += 1;
 	pthread_mutex_unlock(philo->eat_count_mutex);
