@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:20:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/06 16:08:15 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/07 16:10:00 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,10 @@ pthread_mutex_t	*ph_allocate_fork(t_program *info, int idx, char c)
 
 void	ph_fork_mutex(t_philo *philo)
 {
-	if (!(philo->id % 2))
-	{
-		pthread_mutex_lock(philo->left_fork);
-		ph_print(philo->id, 'f', philo->info);
-		pthread_mutex_lock(philo->right_fork);
-		ph_print(philo->id, 'f', philo->info);
-	}
-	else
-	{
-		pthread_mutex_lock(philo->right_fork);
-		ph_print(philo->id, 'f', philo->info);
-		pthread_mutex_lock(philo->left_fork);
-		ph_print(philo->id, 'f', philo->info);
-	}
+	pthread_mutex_lock(philo->left_fork);
+	ph_print(philo->id, 'f', philo->info);
+	pthread_mutex_lock(philo->right_fork);
+	ph_print(philo->id, 'f', philo->info);
 }
 
 void	ph_fork_mutex_one(t_philo *philo)
