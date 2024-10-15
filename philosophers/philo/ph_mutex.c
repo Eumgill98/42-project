@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:20:06 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/07 16:50:03 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/14 16:27:35 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	ph_fork_mutex(t_philo *philo)
 {
 	if (philo->id % 2)
 	{
-		usleep(100);
 		pthread_mutex_lock(philo->left_fork);
 		ph_print(philo->id, 'f', philo->info);
 		pthread_mutex_lock(philo->right_fork);
@@ -87,5 +86,5 @@ void	ph_fork_mutex_one(t_philo *philo)
 	pthread_mutex_lock(philo->left_fork);
 	ph_print(philo->id, 'f', philo->info);
 	pthread_mutex_unlock(philo->left_fork);
-	ph_new_sleep(philo->info->time_to_die);
+	ph_new_sleep(philo->info->time_to_die + 1);
 }

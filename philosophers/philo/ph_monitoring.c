@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/06 16:02:46 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:20:25 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static int	check_dead(t_program *info)
 		}
 		pthread_mutex_unlock(philo->last_eaten_mutex);
 		idx++;
+		usleep(100);
 	}
 	return (0);
 }
@@ -87,6 +88,6 @@ void	ph_monitoring(t_program *info)
 			if (dead_flag)
 				break ;
 		}
-		usleep(100);
+		usleep(10);
 	}
 }
