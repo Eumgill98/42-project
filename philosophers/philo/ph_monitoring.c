@@ -15,28 +15,25 @@
 static int	check_all_eaten(t_program *info)
 {
 	int		idx;
-	int		enough_eat;
 	t_philo	*philo;
 
 	idx = 0;
-	enough_eat = 0;
 	while (idx < info->num_philos)
 	{
 		philo = info->philos[idx];
 		pthread_mutex_lock(philo->eat_count_mutex);
-		if (philo->eat_count >= info->end_point)
-			enough_eat += 1;
+		if (philo->eat_count < info->end_point)
+		{
+			pthread_mutex_unlock(philo->eat_count_mutex);
+			return (0);
+		}
 		pthread_mutex_unlock(philo->eat_count_mutex);
 		idx++;
 	}
-	if (enough_eat == info->num_philos)
-	{
-		pthread_mutex_lock(info->dead_mutex);
-		info->end_flag = 1;
-		pthread_mutex_unlock(info->dead_mutex);
-		return (1);
-	}
-	return (0);
+	pthread_mutex_lock(info->dead_mutex);
+	info->end_flag = 1;
+	pthraed_mutex_unlock(info->dead_mutex);
+	return (1);
 }
 
 static int	check_dead(t_program *info)
@@ -70,24 +67,15 @@ static int	check_dead(t_program *info)
 
 void	ph_monitoring(t_program *info)
 {
-	int	all_eat_flag;
-	int	dead_flag;
-
 	while (1)
 	{
 		if (info->end_point != -1)
 		{
-			all_eat_flag = check_all_eaten(info);
-			dead_flag = check_dead(info);
-			if (all_eat_flag || dead_flag)
+			if (check_all_eaten(info))
 				break ;
 		}
-		else
-		{
-			dead_flag = check_dead(info);
-			if (dead_flag)
-				break ;
-		}
-		usleep(10);
+		if (check_dead(info))
+			break ;
+		usleep(100);
 	}
 }
