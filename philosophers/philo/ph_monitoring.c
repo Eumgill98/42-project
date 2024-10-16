@@ -6,7 +6,7 @@
 /*   By: hocjeong <hocjeong@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:04:57 by hocjeong          #+#    #+#             */
-/*   Updated: 2024/10/15 14:20:25 by hocjeong         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:08:47 by hocjeong         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	check_all_eaten(t_program *info)
 	}
 	pthread_mutex_lock(info->dead_mutex);
 	info->end_flag = 1;
-	pthraed_mutex_unlock(info->dead_mutex);
+	pthread_mutex_unlock(info->dead_mutex);
 	return (1);
 }
 
@@ -49,18 +49,22 @@ static int	check_dead(t_program *info)
 		if ((ph_now_ms(info) - philo->last_eaten) \
 				>= info->time_to_die)
 		{
-			pthread_mutex_lock(info->dead_mutex);
-			pthread_mutex_lock(info->print_mutex);
-			info->end_flag = 1;
-			printf("%lu %d is died\n", ph_now_ms(info), idx + 1);
-			pthread_mutex_unlock(info->print_mutex);
-			pthread_mutex_unlock(info->dead_mutex);
 			pthread_mutex_unlock(philo->last_eaten_mutex);
-			return (1);
+			break ;
 		}
 		pthread_mutex_unlock(philo->last_eaten_mutex);
 		idx++;
 		usleep(100);
+	}
+	if (idx < info->num_philos)
+	{
+		pthread_mutex_lock(info->dead_mutex);
+		pthread_mutex_lock(info->print_mutex);
+		info->end_flag = 1;
+		printf("%lu %d is died\n", ph_now_ms(info), idx + 1);
+		pthread_mutex_unlock(info->print_mutex);
+		pthread_mutex_unlock(info->dead_mutex);
+		return (1);
 	}
 	return (0);
 }
