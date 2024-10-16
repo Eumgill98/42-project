@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-static int	check_end(t_program *info, int *eat, int *dead_idx)
+static void	check_end(t_program *info, int *eat, int *dead, int *dead_idx)
 {
 	int	idx;
 
@@ -32,13 +32,13 @@ static int	check_end(t_program *info, int *eat, int *dead_idx)
 		{
 			pthread_mutex_unlock(info->philos[idx]->last_eaten_mutex);
 			*dead_idx = idx;
-			return (1);
+			*dead = 1;
+			return ;
 		}
 		pthread_mutex_unlock(info->philos[idx]->last_eaten_mutex);
 		idx++;
 		usleep(100);
 	}
-	return (0);
 }
 
 static int	end_loops(t_program *info, int eat, int dead, int dead_idx)
@@ -73,7 +73,8 @@ void	ph_monitoring(t_program *info)
 	{
 		eat = 0;
 		dead_idx = 0;
-		dead = check_end(info, &eat, &dead_idx);
+		dead = 0;
+		check_end(info, &eat, &dead, &dead_idx);
 		if (end_loops(info, eat, dead, dead_idx))
 			break ;
 		usleep(100);
