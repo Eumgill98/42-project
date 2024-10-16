@@ -69,13 +69,13 @@ void	ph_monitoring(t_program *info)
 {
 	while (1)
 	{
+		if (check_dead(info))
+			break ;
 		if (info->end_point != -1)
 		{
 			if (check_all_eaten(info))
 				break ;
 		}
-		if (check_dead(info))
-			break ;
 		usleep(100);
 	}
 }
