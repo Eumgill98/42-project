@@ -12,74 +12,51 @@
 
 #include "philo.h"
 
-static int	check_all_eaten(t_program *info)
+static int	check_end(t_program *info, int *eat)
 {
-	int		idx;
-	t_philo	*philo;
+	int idx;
 
 	idx = 0;
 	while (idx < info->num_philos)
 	{
-		philo = info->philos[idx];
-		pthread_mutex_lock(philo->eat_count_mutex);
-		if (philo->eat_count < info->end_point)
+		if (info->end_flag != -1)
 		{
-			pthread_mutex_unlock(philo->eat_count_mutex);
-			return (0);
+			pthread_mutex_lock(info->philos[idx]->eat_count_mutex);
+			if (info->philos[idx]->eat_count >= info->end_flag)
+				*eat += 1;
+			pthread_mutex_unlock(info->philos[idx]->eat_count_mutex);
 		}
-		pthread_mutex_unlock(philo->eat_count_mutex);
-		idx++;
-	}
-	pthread_mutex_lock(info->dead_mutex);
-	info->end_flag = 1;
-	pthread_mutex_unlock(info->dead_mutex);
-	return (1);
-}
-
-static int	check_dead(t_program *info)
-{
-	int		idx;
-	t_philo	*philo;
-
-	idx = 0;
-	while (idx < info->num_philos)
-	{
-		philo = info->philos[idx];
-		pthread_mutex_lock(philo->last_eaten_mutex);
+		pthread_mutex_lock(info->philos[idx]->last_eaten_mutex);
 		if ((ph_now_ms(info) - philo->last_eaten) \
 				>= info->time_to_die)
 		{
-			pthread_mutex_unlock(philo->last_eaten_mutex);
-			break ;
+			pthread_mutex_unlock(info->philos[idx]->last_eaten_mutex);
+			return (idx);
 		}
-		pthread_mutex_unlock(philo->last_eaten_mutex);
+		pthread_mutex_unlock(info->philos[idx]->last_eaten_mutex);
 		idx++;
-		usleep(100);
-	}
-	if (idx < info->num_philos)
-	{
-		pthread_mutex_lock(info->dead_mutex);
-		pthread_mutex_lock(info->print_mutex);
-		info->end_flag = 1;
-		printf("%lu %d is died\n", ph_now_ms(info), idx + 1);
-		pthread_mutex_unlock(info->print_mutex);
-		pthread_mutex_unlock(info->dead_mutex);
-		return (1);
 	}
 	return (0);
 }
 
 void	ph_monitoring(t_program *info)
 {
+	int eat;
+	int	dead;
+
 	while (1)
 	{
-		if (check_dead(info))
-			break ;
-		if (info->end_point != -1)
+		eat = 0;
+		dead = check_end(info, &eat);
+		if (dead)
 		{
-			if (check_all_eaten(info))
-				break ;
+			pthread_mutex_lock(info->print_mutex);
+			printf("%lu %d is died\n", ph_now_ms(info), dead + 1);
+			pthread_mutex_unlock(info->print_mutex);
+			break ;
 		}
-		usleep(100);
+		if (eat == info->num_philos)
+			break ;
+		break ;
 	}
 }
