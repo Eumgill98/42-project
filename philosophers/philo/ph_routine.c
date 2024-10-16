@@ -20,12 +20,12 @@ static void	ph_eat(t_philo *philo)
 		ph_fork_mutex(philo);
 	pthread_mutex_lock(philo->last_eaten_mutex);
 	philo->last_eaten = ph_now_ms(philo->info);
-	pthread_mutex_unlock(philo->last_eaten_mutex);
 	ph_print(philo->id, 'e', philo->info);
-	ph_new_sleep(philo->info->time_to_eat);
+	pthread_mutex_unlock(philo->last_eaten_mutex);
 	pthread_mutex_lock(philo->eat_count_mutex);
 	philo->eat_count += 1;
 	pthread_mutex_unlock(philo->eat_count_mutex);
+	ph_new_sleep(philo->info->time_to_eat);
 	pthread_mutex_unlock(philo->left_fork);
 	pthread_mutex_unlock(philo->right_fork);
 }
