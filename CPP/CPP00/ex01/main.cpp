@@ -25,7 +25,6 @@ int main(void)
         }
         else
             std::cout << command << " is wrong command !!" << std::endl;
-        command.clear();
     }
     return (0);
 }
