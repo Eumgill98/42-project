@@ -10,7 +10,7 @@ SRCS = 	main.cpp \
 		PhoneBook.cpp \
 		Contact.cpp
 
-OBJS = ${SRC:.cpp=.o}
+OBJS = ${SRCS:.cpp=.o}
 
 all: $(NAME)
 

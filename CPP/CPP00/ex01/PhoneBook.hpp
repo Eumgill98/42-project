@@ -3,6 +3,7 @@
 
 #include "Contact.hpp"
 #include <cctype>
+#include <iostream>
 
 class PhoneBook {
     private:
@@ -18,14 +19,15 @@ class PhoneBook {
             DarkestSecret,
         };
 
-        bool    _is_valid_value(string::string value, ValueType type);
-        void    _read_contact(std::string &value, ValueType type, char *instruct);
+        bool    _is_valid_value(std::string value, ValueType type);
+        void    _read_contact(std::string &value, ValueType type, const char *instruct);
 
     public:
         PhoneBook(void);
         ~PhoneBook(void);
 
         void    add_contact(void);
-        void    search_contact(void);       
-}
+        //void    search_contact(void);       
+} ;
+
 #endif

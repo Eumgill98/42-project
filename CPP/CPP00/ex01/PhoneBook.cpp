@@ -11,26 +11,26 @@ PhoneBook::~PhoneBook(void)
     return ;
 }
 
-PhoneBook::_is_valid_value(std::string value, ValueType type)
+bool PhoneBook::_is_valid_value(std::string value, ValueType type)
 {
     if (type == FirstName || type == LastName || type == Nickname)
     {
-        for (char c : value)
+        for (size_t i = 0; i < value.size(); i++)
         {
-            if (!std::isalpha(c) && !(c >= 0xAC00 && c <= 0xD7A3))
+            if (!std::isalpha(value[i]))
             {
-                std::cout << c << " is not valid value. Try Again !" << std::endl;
+                std::cout << "[" << value[i] << "]" << " is not valid value. Try Again !" << std::endl;
                 return false ;
             }
         }
     }
     else if (type == PhoneNumber)
     {
-        for (char c : value)
+        for (size_t i = 0; i < value.size(); i++)
         {
-            if (!isdigit(c))
+            if (!isdigit(value[i]))
             {
-                std::cout << c << " is not digit. Try Again !" << std::endl;
+                std::cout << "[" << value[i] << "]" << " is not digit. Try Again !" << std::endl;
                 return false ;
             }
         }
@@ -38,14 +38,14 @@ PhoneBook::_is_valid_value(std::string value, ValueType type)
     return true;
 }
 
-PhoneBook::_read_contact(std::string &value, ValueType type, char *instruct)
+void PhoneBook::_read_contact(std::string &value, ValueType type, const char *instruct)
 {
     while (true)
     {
         std::cout << instruct << std::endl;
         std::getline(std::cin, value);
 
-        if (vale.empty())
+        if (value.empty())
         {
             std::cout << "Input can't be empty. Try Again !!" << std::endl;
             continue ;
@@ -57,7 +57,7 @@ PhoneBook::_read_contact(std::string &value, ValueType type, char *instruct)
     }
 }
 
-PhoneBook::add_contact(void)
+void PhoneBook::add_contact(void)
 {
     std::string first_name;
     std::string last_name;
@@ -74,10 +74,9 @@ PhoneBook::add_contact(void)
     if (this->_full)
     {
         for (int i = 1; i < 8; i++) {
-            this->_contact[i - 1] = this->_contact[i]
-            
+            this->_contact[i - 1] = this->_contact[i];
         }
-        this->_contact[7].set_contact(first_name, last_name, nickname, phone_number, darkest_secret) 
+        this->_contact[7].set_contact(first_name, last_name, nickname, phone_number, darkest_secret);
     }
     else
     {
@@ -88,7 +87,7 @@ PhoneBook::add_contact(void)
     }
 }
 
-PhoneBook::search_contact(void)
-{
+// PhoneBook::search_contact(void)
+// {
 
-}
+// }

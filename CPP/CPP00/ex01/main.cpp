@@ -16,8 +16,8 @@ int main(void)
         }
         else if (command.compare("ADD") == 0)
             PhoneBook.add_contact();
-        else if (command.compare("SEARCH") == 0)
-            PhoneBook.search_contact();
+        // else if (command.compare("SEARCH") == 0)
+        //     PhoneBook.search_contact();
         else if (command.compare("EXIT") == 0)
         {
             std::cout << "PhoneBook Program Exit By Exit command." << std::endl;
