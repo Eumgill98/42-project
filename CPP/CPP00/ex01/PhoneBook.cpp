@@ -28,7 +28,7 @@ bool PhoneBook::_is_valid_value(std::string value, ValueType type)
     {
         for (size_t i = 0; i < value.size(); i++)
         {
-            if (!isdigit(value[i]))
+            if (!std::isdigit(value[i]))
             {
                 std::cout << "\"" << value << "\"" << " is not digit. Try Again !" << std::endl;
                 return false ;
@@ -45,6 +45,11 @@ void PhoneBook::_read_contact(std::string &value, ValueType type, const char *in
         std::cout << instruct << std::endl;
         std::getline(std::cin, value);
 
+        if (std::cin.eof())
+        {
+            std::cout << "PhoneBook Program Exit By ^D." << std::endl;
+            exit(1);
+        }
         if (value.empty())
         {
             std::cout << "Input can't be empty. Try Again !!" << std::endl;
@@ -117,8 +122,8 @@ void PhoneBook::search_contact(void)
 
         if (std::cin.eof())
         {
-            std::cout << "PhoneBook Program Exit By Exit input." << std::endl;
-            exit(0) ;
+            std::cout << "PhoneBook Program Exit By ^D." << std::endl;
+            exit(1) ;
         }
         if (input.empty())
         {
@@ -134,6 +139,6 @@ void PhoneBook::search_contact(void)
             break ;
         }
         else
-            std::cout << "[ " << idx << " ] That idx is out of ragne !!! [ Currently, there are up to " << this->_now_idx  << " ]" << std::endl;
+            std::cout << "[ " << idx << " ] That idx is out of range !!! [ Currently, there are up to " << this->_now_idx  << " ]" << std::endl;
     }
 }
