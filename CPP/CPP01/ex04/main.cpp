@@ -9,20 +9,23 @@ int replace(char *infile, char *s1, char *s2, std::string buffer)
 
     outfile.open((std::string(infile) + ".replace").c_str(), std::ios::out);
     if (outfile.fail())
-        return 1;
-
+    {
+        std::cout << "Error:" << infile << ".replace" << "no make file or directory" << std::endl;
+        return (1);
+    }
     for (int i = 0; i < (int)buffer.size(); i++) 
     {
         int j = buffer.find(s1_str, i);
-        if (j != -1 && j == i) {
+        if (j != -1 && j == i)
+        {
             outfile << s2_str;
             i += s1_str.size() - 1;
-        } else {
+        } 
+        else
             outfile << buffer[i];
-        }
     }
     outfile.close();
-    return 0;
+    return (0);
 }
 
 int main(int ac, char **av)
