@@ -1,3 +1,5 @@
+#include "ScavTrap.hpp"
+
 int main() {
     std::cout << "===== ScavTrap 생성자 테스트 =====" << std::endl;
     ScavTrap scav1("SC4V");
