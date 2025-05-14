@@ -32,11 +32,15 @@ FragTrap::~FragTrap()
     std::cout << this->_name << " FragTrap Deconstructor called" << std::endl;
 }
 
-FragTrap &FragTrap::operator=(const FragTrap &other) {
-    this->_name = other._name;
-    this->_hit_point = other._hit_point;
-    this->_energy_point = other._energy_point;
-    this->_attack_damage = other._attack_damage;
+FragTrap &FragTrap::operator=(const FragTrap &other) 
+{
+    if (this != &other)
+    {
+        this->_name = other._name;
+        this->_hit_point = other._hit_point;
+        this->_energy_point = other._energy_point;
+        this->_attack_damage = other._attack_damage;
+    }
     std::cout << "FragTrap Assignation operator called" << std::endl;
     return *this;
 }
