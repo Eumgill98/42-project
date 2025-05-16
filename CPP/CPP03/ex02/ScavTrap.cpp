@@ -6,7 +6,7 @@ ScavTrap::ScavTrap()
     this->_hit_point = 100;
     this->_energy_point = 50;
     this->_attack_damage = 20;
-    std::cout << "ScavTrap Default Constructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Default Constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &copy)
@@ -15,7 +15,7 @@ ScavTrap::ScavTrap(const ScavTrap &copy)
     this->_hit_point = copy._hit_point;
     this->_energy_point = copy._energy_point;
     this->_attack_damage = copy._attack_damage;
-    std::cout << "ScavTrap Copy Constructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Copy Constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name)
@@ -24,7 +24,7 @@ ScavTrap::ScavTrap(std::string name)
     this->_hit_point = 100;
     this->_energy_point = 50;
     this->_attack_damage = 20;
-    std::cout << "ScavTrap Constructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Constructor called" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -41,7 +41,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other)
         this->_energy_point = other._energy_point;
         this->_attack_damage = other._attack_damage;
     }
-    std::cout << "ScavTrap Assignation operator called" << std::endl;   
+    std::cout << "ScavTrap " << this->_name << " Assignation operator called" << std::endl;   
     return *this;
 }
 
