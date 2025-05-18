@@ -1,4 +1,4 @@
-NAME = IDWTSTWOF
+NAME = AbstractClass
 CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -6,13 +6,14 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -f
 
 SRCS = main.cpp \
+		AAnimal.cpp \
 		Animal.cpp \
 		Cat.cpp \
 		Dog.cpp \
 		WrongAnimal.cpp \
 		WrongDog.cpp \
 		Brain.cpp \
-
+		
 OBJS = ${SRCS:.cpp=.o}
 
 all: $(NAME)
