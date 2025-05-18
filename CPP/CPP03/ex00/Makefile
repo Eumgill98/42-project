@@ -1,4 +1,4 @@
-NAME = Aaaaand
+NAME = ex00
 
 CXX = c++
 

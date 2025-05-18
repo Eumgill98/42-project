@@ -1,4 +1,4 @@
-NAME = SerenaMyLove
+NAME = ex01
 
 CXX = c++
 

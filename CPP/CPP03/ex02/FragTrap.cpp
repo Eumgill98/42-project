@@ -29,7 +29,7 @@ FragTrap::FragTrap(std::string name)
 
 FragTrap::~FragTrap()
 {
-    std::cout <<  this->_name << " FragTrap Deconstructor called" << std::endl;
+    std::cout << "FragTrap " << this->_name << " Deconstructor called" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap &other) 

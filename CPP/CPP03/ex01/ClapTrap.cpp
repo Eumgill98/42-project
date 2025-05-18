@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << this->_name << " ClapTrap Deconstructor called" << std::endl;
+    std::cout << "ClapTrap " << this->_name << " Deconstructor called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)

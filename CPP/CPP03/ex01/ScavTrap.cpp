@@ -29,7 +29,7 @@ ScavTrap::ScavTrap(std::string name)
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << this->_name << " ScavTrap Deconstructor called" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " Deconstructor called" << std::endl;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other)
